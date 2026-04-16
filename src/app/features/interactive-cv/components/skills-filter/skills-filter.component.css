@@ -1,6 +1,6 @@
 .skills-wrap {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .section-header {
@@ -11,15 +11,15 @@
 h2 {
   margin: 0;
   color: #112247;
-  font-size: 1.01rem;
+  font-size: 1.06rem;
   letter-spacing: -0.01em;
 }
 
 .intro {
   margin: 0;
   color: #425470;
-  font-size: 0.86rem;
-  line-height: 1.58;
+  font-size: 0.87rem;
+  line-height: 1.6;
 }
 
 .all-button {
@@ -29,7 +29,7 @@ h2 {
   color: #23469e;
   border-radius: 999px;
   font-weight: 700;
-  padding: 7px 11px;
+  padding: 8px 12px;
   cursor: pointer;
   transition: transform 210ms ease, box-shadow 210ms ease, border-color 210ms ease;
 }
@@ -48,12 +48,12 @@ h2 {
 
 .groups {
   display: grid;
-  gap: 11px;
+  gap: 12px;
 }
 
 .skill-group {
   border-top: 1px solid #dde7f6;
-  padding-top: 11px;
+  padding-top: 12px;
   display: grid;
   gap: 8px;
 }
@@ -78,11 +78,17 @@ h3 {
   background: #f5f8ff;
   color: #324665;
   border-radius: 999px;
-  padding: 6px 10px;
+  padding: 6px 11px;
   font-size: 0.74rem;
   font-weight: 700;
   cursor: pointer;
   transition: transform 210ms ease, border-color 210ms ease, background-color 210ms ease, box-shadow 210ms ease;
+}
+
+.all-button:focus-visible,
+.chip:focus-visible {
+  outline: 2px solid #8fb0f4;
+  outline-offset: 2px;
 }
 
 .chip:hover {

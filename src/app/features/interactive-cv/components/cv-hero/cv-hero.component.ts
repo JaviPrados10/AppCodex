@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { ContactInfo } from '../../../../models/cv.model';
+import { ContactInfo, CvProfile } from '../../../../models/cv.model';
 import { CvContactCardComponent } from '../cv-contact-card/cv-contact-card.component';
 
 @Component({
@@ -16,4 +16,5 @@ export class CvHeroComponent {
   @Input({ required: true }) role = '';
   @Input({ required: true }) summary = '';
   @Input({ required: true }) contact!: ContactInfo;
+  @Input({ required: true }) profile!: CvProfile;
 }

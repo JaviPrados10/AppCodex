@@ -5,14 +5,16 @@
 .contact-card {
   background: linear-gradient(165deg, rgb(255 255 255 / 93%) 0%, rgb(242 247 255 / 90%) 100%);
   border: 1px solid rgb(188 209 245 / 62%);
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 12px 28px rgb(15 23 42 / 14%);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 14px 30px rgb(15 23 42 / 16%);
   backdrop-filter: blur(4px);
+  display: grid;
+  gap: 14px;
 }
 
 h2 {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 0.84rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -24,7 +26,7 @@ ul {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 8px;
+  gap: 9px;
 }
 
 li {
@@ -32,8 +34,8 @@ li {
   grid-template-columns: auto 1fr;
   gap: 10px;
   align-items: start;
-  padding: 7px 8px;
-  border-radius: 10px;
+  padding: 8px 9px;
+  border-radius: 12px;
   transition: background-color 210ms ease, transform 210ms ease, box-shadow 210ms ease;
 }
 
@@ -58,10 +60,65 @@ strong {
   line-height: 1.45;
 }
 
+strong a {
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+strong a:hover {
+  text-decoration: underline;
+}
+
 mat-icon {
   width: 0.95rem;
   height: 0.95rem;
   font-size: 0.95rem;
   color: #2a57c6;
   margin-top: 2px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.action-button {
+  border: 1px solid #b6cbf6;
+  background: linear-gradient(145deg, #edf3ff 0%, #dde9ff 100%);
+  color: #2146a2;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 210ms ease, box-shadow 210ms ease, border-color 210ms ease, background-color 210ms ease;
+}
+
+.action-button:hover {
+  transform: translateY(-1px);
+  border-color: #91b1f3;
+  box-shadow: 0 9px 18px rgb(30 64 175 / 14%);
+}
+
+.action-button:focus-visible,
+strong a:focus-visible {
+  outline: 2px solid #92b1f3;
+  outline-offset: 2px;
+}
+
+.action-button-primary {
+  border-color: #2146a2;
+  background: #2146a2;
+  color: #ffffff;
+}
+
+@media (max-width: 520px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
 }
