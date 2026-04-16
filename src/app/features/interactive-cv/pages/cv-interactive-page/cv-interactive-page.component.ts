@@ -1,0 +1,50 @@
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+
+import { CV_DATA } from '../../../../data/cv.data';
+import { CvProfile } from '../../../../models/cv.model';
+import { CvHeroComponent } from '../../components/cv-hero/cv-hero.component';
+import { InteractiveExperienceListComponent } from '../../components/experience-list/experience-list.component';
+import { SkillsFilterComponent } from '../../components/skills-filter/skills-filter.component';
+
+@Component({
+  selector: 'app-cv-interactive-page',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatDividerModule,
+    CvHeroComponent,
+    SkillsFilterComponent,
+    InteractiveExperienceListComponent
+  ],
+  templateUrl: './cv-interactive-page.component.html',
+  styleUrl: './cv-interactive-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CvInteractivePageComponent {
+  readonly cvData: CvProfile = CV_DATA;
+  readonly selectedSkill = signal<string | null>(null);
+  readonly selectedExperienceIndex = signal<number | null>(0);
+
+  readonly filteredExperiences = computed(() => {
+    const selectedSkill = this.selectedSkill();
+
+    if (!selectedSkill) {
+      return this.cvData.experience;
+    }
+
+    return this.cvData.experience.filter((experience) => experience.stackHighlights.includes(selectedSkill));
+  });
+
+  onSkillSelected(skill: string | null): void {
+    this.selectedSkill.set(skill);
+    this.selectedExperienceIndex.set(this.filteredExperiences().length ? 0 : null);
+  }
+
+  onExperienceSelected(index: number | null): void {
+    this.selectedExperienceIndex.set(index);
+  }
+}

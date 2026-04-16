@@ -1,0 +1,56 @@
+<section class="cv-page">
+  <app-cv-hero
+    [name]="cvData.name"
+    [role]="cvData.mainRole"
+    [summary]="cvData.professionalSummary"
+    [contact]="cvData.contact"
+  />
+
+  <app-skills-filter
+    [skills]="cvData.technicalSkills"
+    [selectedSkill]="selectedSkill()"
+    (skillSelected)="onSkillSelected($event)"
+  />
+
+  <app-interactive-experience-list
+    [experiences]="filteredExperiences()"
+    [selectedIndex]="selectedExperienceIndex()"
+    (selectedIndexChange)="onExperienceSelected($event)"
+  />
+
+  <mat-card>
+    <mat-card-header><mat-card-title>Formación académica</mat-card-title></mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let item of cvData.education">
+          <strong>{{ item.degree }}</strong> · {{ item.institution }} · {{ item.date }}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="two-columns">
+    <mat-card>
+      <mat-card-header><mat-card-title>Idiomas</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let language of cvData.languages">{{ language }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header><mat-card-title>Cursos y otros datos</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let course of cvData.courses">
+            {{ course.title }}<span *ngIf="course.hours"> ({{ course.hours }})</span> – {{ course.provider }}
+          </li>
+          <li *ngFor="let detail of cvData.otherDetails">{{ detail }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-divider />
+</section>
