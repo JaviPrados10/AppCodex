@@ -1,11 +1,25 @@
 <section class="home-wrapper">
-  <mat-card class="home-card" appearance="outlined">
-    <mat-card-content>
-      <h1>Bienvenido</h1>
-      <p>Tu aplicación Angular con Material está lista para usar.</p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-flat-button color="primary">Comenzar</button>
-    </mat-card-actions>
-  </mat-card>
+  <nav class="section-nav" aria-label="Navegación del CV">
+    <a mat-stroked-button href="#experiencia">Experiencia</a>
+    <a mat-stroked-button href="#formacion">Formación</a>
+    <a mat-stroked-button href="#competencias">Competencias</a>
+    <a mat-stroked-button href="#idiomas">Idiomas</a>
+    <a mat-stroked-button href="#otros">Otros datos</a>
+  </nav>
+
+  <app-cv-header
+    [name]="cvData.name"
+    [mainRole]="cvData.mainRole"
+    [professionalSummary]="cvData.professionalSummary"
+    [contact]="cvData.contact"
+  ></app-cv-header>
+
+  <app-experience-list [experiences]="cvData.experience"></app-experience-list>
+  <app-education-section [educationItems]="cvData.education"></app-education-section>
+  <app-skills-section [skills]="cvData.technicalSkills"></app-skills-section>
+  <app-languages-section [languages]="cvData.languages"></app-languages-section>
+  <app-certifications-section
+    [courses]="cvData.courses"
+    [otherDetails]="cvData.otherDetails"
+  ></app-certifications-section>
 </section>

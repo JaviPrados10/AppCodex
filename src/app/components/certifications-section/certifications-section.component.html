@@ -1,0 +1,23 @@
+<section aria-labelledby="other-title" class="section-block" id="otros">
+  <h2 id="other-title">Otros datos y cursos</h2>
+
+  <mat-card appearance="outlined" class="item-card">
+    <mat-card-content>
+      <h3>Cursos</h3>
+      <ul>
+        <li *ngFor="let course of courses">
+          {{ course.title }}<span *ngIf="course.hours"> ({{ course.hours }})</span> – {{ course.provider }}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="item-card" *ngIf="otherDetails.length > 0">
+    <mat-card-content>
+      <h3>Información adicional</h3>
+      <ul>
+        <li *ngFor="let detail of otherDetails">{{ detail }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</section>
