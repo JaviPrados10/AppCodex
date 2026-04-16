@@ -1,19 +1,23 @@
 <section class="hero-grid" aria-label="Presentación profesional">
   <mat-card class="hero-card intro-card">
     <mat-card-content>
-      <p class="eyebrow">CV Interactivo</p>
+      <p class="eyebrow">Perfil profesional</p>
       <h1>{{ name }}</h1>
       <h2>{{ role }}</h2>
       <p class="summary">{{ summary }}</p>
 
       <div class="hero-metrics" aria-label="Indicadores de perfil">
         <div class="metric-pill">
-          <span class="metric-label">Perfil</span>
+          <span class="metric-label">Nivel</span>
           <strong>Senior</strong>
         </div>
         <div class="metric-pill">
-          <span class="metric-label">Orientación</span>
-          <strong>Arquitectura & calidad</strong>
+          <span class="metric-label">Especialización</span>
+          <strong>Angular · Arquitectura front</strong>
+        </div>
+        <div class="metric-pill">
+          <span class="metric-label">Foco</span>
+          <strong>Calidad, mantenibilidad y entrega</strong>
         </div>
       </div>
     </mat-card-content>
@@ -26,9 +30,9 @@
     <mat-card-content>
       <ul class="contact-list">
         <li><mat-icon aria-hidden="true">location_on</mat-icon> <span>{{ contact.address }}</span></li>
+        <li><mat-icon aria-hidden="true">mail</mat-icon> <span>{{ contact.email }}</span></li>
         <li><mat-icon aria-hidden="true">phone_iphone</mat-icon> <span>{{ contact.mobilePhone }}</span></li>
         <li><mat-icon aria-hidden="true">phone</mat-icon> <span>{{ contact.landlinePhone }}</span></li>
-        <li><mat-icon aria-hidden="true">mail</mat-icon> <span>{{ contact.email }}</span></li>
         <li><mat-icon aria-hidden="true">cake</mat-icon> <span>{{ contact.birthDate }}</span></li>
         <li><mat-icon aria-hidden="true">flag</mat-icon> <span>{{ contact.nationality }}</span></li>
       </ul>
