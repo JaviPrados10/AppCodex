@@ -1,25 +1,94 @@
 .hero-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1.35fr 1fr;
+}
+
+.hero-card {
+  height: 100%;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(125, 152, 209, 0.25);
+  background: linear-gradient(160deg, rgba(13, 24, 39, 0.93), rgba(12, 20, 34, 0.96));
+  box-shadow: 0 14px 40px rgba(5, 13, 26, 0.35);
+}
+
+.intro-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-card::after {
+  content: '';
+  position: absolute;
+  width: 16rem;
+  height: 16rem;
+  right: -6rem;
+  top: -7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(76, 162, 255, 0.24) 0%, rgba(76, 162, 255, 0) 70%);
 }
 
 .eyebrow {
   margin: 0;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: #616161;
+  color: #7bc5ff;
+  font-weight: 600;
 }
 
 h1 {
-  margin: 0.25rem 0;
+  margin: 0.35rem 0;
+  font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+  line-height: 1.1;
+  color: #eef4ff;
 }
 
 h2 {
-  margin: 0 0 1rem;
-  color: #3f51b5;
-  font-size: 1.15rem;
+  margin: 0;
+  color: #a9d8ff;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.summary {
+  margin: 1rem 0 0;
+  color: #ccd8f1;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+.hero-metrics {
+  margin-top: 1.15rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.metric-pill {
+  display: grid;
+  gap: 0.12rem;
+  padding: 0.48rem 0.72rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(127, 185, 255, 0.24);
+  background: rgba(38, 74, 120, 0.28);
+}
+
+.metric-label {
+  font-size: 0.73rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #9db1dd;
+}
+
+.metric-pill strong {
+  font-size: 0.84rem;
+  color: #edf4ff;
+}
+
+.contact-card mat-card-title {
+  color: #eef4ff;
+  font-size: 1rem;
 }
 
 .contact-list {
@@ -27,17 +96,29 @@ h2 {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
 li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  padding: 0.48rem 0.55rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(120, 144, 189, 0.2);
+  background: rgba(28, 40, 61, 0.72);
+  color: #d8e5fd;
 }
 
 mat-icon {
-  font-size: 1.1rem;
-  width: 1.1rem;
-  height: 1.1rem;
+  color: #76beff;
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
 }
