@@ -1,0 +1,26 @@
+<section class="hero-grid" aria-label="Presentación profesional">
+  <mat-card>
+    <mat-card-content>
+      <p class="eyebrow">CV Interactivo</p>
+      <h1>{{ name }}</h1>
+      <h2>{{ role }}</h2>
+      <p>{{ summary }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Contacto</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul class="contact-list">
+        <li><mat-icon aria-hidden="true">location_on</mat-icon> {{ contact.address }}</li>
+        <li><mat-icon aria-hidden="true">phone_iphone</mat-icon> {{ contact.mobilePhone }}</li>
+        <li><mat-icon aria-hidden="true">phone</mat-icon> {{ contact.landlinePhone }}</li>
+        <li><mat-icon aria-hidden="true">mail</mat-icon> {{ contact.email }}</li>
+        <li><mat-icon aria-hidden="true">cake</mat-icon> {{ contact.birthDate }}</li>
+        <li><mat-icon aria-hidden="true">flag</mat-icon> {{ contact.nationality }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</section>
