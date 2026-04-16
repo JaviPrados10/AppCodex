@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ContactInfo } from '../../../../models/cv.model';
@@ -7,7 +6,7 @@ import { ContactInfo } from '../../../../models/cv.model';
 @Component({
   selector: 'app-cv-hero',
   standalone: true,
-  imports: [MatCardModule, MatIconModule],
+  imports: [MatIconModule],
   templateUrl: './cv-hero.component.html',
   styleUrl: './cv-hero.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

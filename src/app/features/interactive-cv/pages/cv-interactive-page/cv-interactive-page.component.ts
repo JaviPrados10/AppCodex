@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 
 import { CV_DATA } from '../../../../data/cv.data';
 import { CvProfile } from '../../../../models/cv.model';
@@ -12,14 +10,7 @@ import { SkillGroup, SkillsFilterComponent } from '../../components/skills-filte
 @Component({
   selector: 'app-cv-interactive-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatDividerModule,
-    CvHeroComponent,
-    SkillsFilterComponent,
-    InteractiveExperienceListComponent
-  ],
+  imports: [CommonModule, CvHeroComponent, SkillsFilterComponent, InteractiveExperienceListComponent],
   templateUrl: './cv-interactive-page.component.html',
   styleUrl: './cv-interactive-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

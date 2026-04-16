@@ -1,43 +1,39 @@
-<section class="hero-shell" aria-label="Presentación profesional">
-  <div class="hero-band" aria-hidden="true"></div>
-
-  <mat-card class="hero-card intro-card">
-    <mat-card-content>
-      <p class="eyebrow">Perfil profesional</p>
+<section class="hero" aria-label="Presentación profesional">
+  <div class="hero-grid">
+    <article class="identity-panel">
+      <p class="eyebrow">Currículum profesional</p>
       <h1>{{ name }}</h1>
-      <h2>{{ role }}</h2>
-      <p class="summary">{{ summary }}</p>
+      <p class="role">{{ role }}</p>
 
-      <div class="hero-metrics" aria-label="Indicadores de perfil">
-        <div class="metric-pill">
-          <span class="metric-label">Nivel</span>
-          <strong>Senior</strong>
+      <div class="identity-metrics" aria-label="Indicadores del perfil">
+        <div class="metric-card">
+          <span>Años en proyectos corporativos</span>
+          <strong>+7</strong>
         </div>
-        <div class="metric-pill">
-          <span class="metric-label">Especialización</span>
-          <strong>Angular · Arquitectura Frontend</strong>
-        </div>
-        <div class="metric-pill">
-          <span class="metric-label">Foco</span>
-          <strong>Calidad, mantenibilidad y entrega</strong>
+        <div class="metric-card">
+          <span>Especialidad</span>
+          <strong>Angular &amp; Frontend Enterprise</strong>
         </div>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </article>
 
-  <mat-card class="hero-card contact-card">
-    <mat-card-header>
-      <mat-card-title>Contacto profesional</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <ul class="contact-list">
-        <li><mat-icon aria-hidden="true">location_on</mat-icon> <span>{{ contact.address }}</span></li>
-        <li><mat-icon aria-hidden="true">mail</mat-icon> <span>{{ contact.email }}</span></li>
-        <li><mat-icon aria-hidden="true">phone_iphone</mat-icon> <span>{{ contact.mobilePhone }}</span></li>
-        <li><mat-icon aria-hidden="true">phone</mat-icon> <span>{{ contact.landlinePhone }}</span></li>
-        <li><mat-icon aria-hidden="true">cake</mat-icon> <span>{{ contact.birthDate }}</span></li>
-        <li><mat-icon aria-hidden="true">flag</mat-icon> <span>{{ contact.nationality }}</span></li>
-      </ul>
-    </mat-card-content>
-  </mat-card>
+    <article class="summary-panel">
+      <header>
+        <p class="summary-kicker">Resumen ejecutivo</p>
+        <h2>Perfil orientado a impacto y entrega</h2>
+      </header>
+
+      <p class="summary-text">{{ summary }}</p>
+
+      <div class="contact-surface" aria-label="Información de contacto">
+        <h3>Contacto</h3>
+        <ul>
+          <li><mat-icon aria-hidden="true">mail</mat-icon><span>{{ contact.email }}</span></li>
+          <li><mat-icon aria-hidden="true">phone_iphone</mat-icon><span>{{ contact.mobilePhone }}</span></li>
+          <li><mat-icon aria-hidden="true">location_on</mat-icon><span>{{ contact.address }}</span></li>
+          <li><mat-icon aria-hidden="true">flag</mat-icon><span>{{ contact.nationality }} · {{ contact.birthDate }}</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
 </section>

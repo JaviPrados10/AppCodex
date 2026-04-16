@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatChipsModule } from '@angular/material/chips';
 
 export interface SkillGroup {
   title: string;
@@ -10,7 +9,7 @@ export interface SkillGroup {
 @Component({
   selector: 'app-skills-filter',
   standalone: true,
-  imports: [CommonModule, MatChipsModule],
+  imports: [CommonModule],
   templateUrl: './skills-filter.component.html',
   styleUrl: './skills-filter.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

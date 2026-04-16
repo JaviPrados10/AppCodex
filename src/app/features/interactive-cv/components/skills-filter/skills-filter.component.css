@@ -1,31 +1,50 @@
 .skills-wrap {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .section-header {
   display: grid;
-  gap: 4px;
+  gap: 5px;
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.09em;
-  color: #1e3a8a;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1d4ed8;
   font-weight: 700;
 }
 
 h2 {
   margin: 0;
-  color: #1f2937;
-  font-size: 1.16rem;
-  font-weight: 700;
+  color: #111827;
+  font-size: 1.2rem;
 }
 
-.all-filter {
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e5e7eb;
+.intro {
+  margin: 0;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.all-button {
+  justify-self: start;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.all-button.is-selected {
+  background: #1e40af;
+  color: #ffffff;
+  border-color: #1e40af;
 }
 
 .groups {
@@ -34,45 +53,47 @@ h2 {
 }
 
 .skill-group {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fbff;
+  padding: 12px;
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 h3 {
   margin: 0;
-  color: #374151;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 0.78rem;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #334155;
 }
 
-mat-chip-set {
+.chips {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
-.skill-chip {
-  --mdc-chip-elevated-container-color: #f8fafc;
-  --mdc-chip-label-text-color: #374151;
-  --mdc-chip-outline-color: #e5e7eb;
-  --mdc-chip-selected-container-color: #dbeafe;
-  --mdc-chip-selected-label-text-color: #1e3a8a;
-  --mdc-chip-with-icon-selected-icon-color: #1d4ed8;
+.chip {
+  border: 1px solid #dbe4f3;
+  background: #ffffff;
+  color: #334155;
   border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  transition: border-color 180ms ease, background-color 180ms ease;
-}
-
-.skill-chip:hover {
-  border-color: #bfdbfe;
-  background-color: #f1f5ff;
-}
-
-.all-chip {
-  --mdc-chip-elevated-container-color: #eff6ff;
-  --mdc-chip-label-text-color: #1e3a8a;
-  border-color: #bfdbfe;
+  padding: 7px 11px;
+  font-size: 0.82rem;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.chip:hover {
+  border-color: #93c5fd;
+  background: #eef5ff;
+}
+
+.chip.is-selected {
+  border-color: #1e40af;
+  background: #1e40af;
+  color: #ffffff;
 }
