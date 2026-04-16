@@ -5,68 +5,58 @@
 
 .section-header {
   display: grid;
-  gap: 5px;
-}
-
-.kicker {
-  margin: 0;
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #1d4ed8;
-  font-weight: 700;
+  gap: 8px;
 }
 
 h2 {
   margin: 0;
   color: #111827;
-  font-size: 1.2rem;
+  font-size: 1.02rem;
 }
 
 .intro {
   margin: 0;
-  color: #475569;
-  font-size: 0.92rem;
-  line-height: 1.55;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .all-button {
   justify-self: start;
   border: 1px solid #bfdbfe;
   background: #eff6ff;
-  color: #1e40af;
-  padding: 8px 12px;
+  color: #1e3a8a;
   border-radius: 999px;
   font-weight: 700;
+  padding: 8px 12px;
   cursor: pointer;
 }
 
 .all-button.is-selected {
-  background: #1e40af;
+  border-color: #1e3a8a;
+  background: #1e3a8a;
   color: #ffffff;
-  border-color: #1e40af;
 }
 
 .groups {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .skill-group {
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  background: #f8fbff;
-  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 h3 {
   margin: 0;
-  font-size: 0.78rem;
+  color: #1f2937;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #334155;
+  letter-spacing: 0.09em;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
 .chips {
@@ -76,24 +66,23 @@ h3 {
 }
 
 .chip {
-  border: 1px solid #dbe4f3;
-  background: #ffffff;
-  color: #334155;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  color: #374151;
   border-radius: 999px;
-  padding: 7px 11px;
-  font-size: 0.82rem;
+  padding: 6px 10px;
+  font-size: 0.77rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 160ms ease;
 }
 
 .chip:hover {
   border-color: #93c5fd;
-  background: #eef5ff;
+  background: #eff6ff;
 }
 
 .chip.is-selected {
-  border-color: #1e40af;
-  background: #1e40af;
+  border-color: #1e3a8a;
+  background: #1e3a8a;
   color: #ffffff;
 }

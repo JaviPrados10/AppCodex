@@ -1,4 +1,4 @@
-<div class="cv-shell" aria-label="Currículum interactivo">
+<div class="cv-page" aria-label="Currículum interactivo">
   <app-cv-hero
     [name]="cvData.name"
     [role]="cvData.mainRole"
@@ -6,67 +6,57 @@
     [contact]="cvData.contact"
   />
 
-  <section class="content-grid" aria-label="Contenido principal del currículum">
-    <div class="primary-column">
-      <section class="section-card experience-panel" aria-label="Trayectoria profesional">
+  <section class="cv-layout" aria-label="Contenido principal del currículum">
+    <main class="primary-column">
+      <app-section-card kicker="Historial" title="Experiencia y contribución técnica">
         <app-interactive-experience-list
           [experiences]="filteredExperiences()"
           [selectedIndex]="selectedExperienceIndex()"
           (selectedIndexChange)="onExperienceSelected($event)"
         />
-      </section>
-    </div>
+      </app-section-card>
+    </main>
 
-    <aside class="secondary-column" aria-label="Información complementaria">
-      <section class="section-card skills-panel" aria-label="Filtrado de competencias">
+    <aside class="sidebar" aria-label="Información profesional complementaria">
+      <app-section-card [compact]="true" title="Stack y herramientas">
         <app-skills-filter
           [skills]="cvData.technicalSkills"
           [skillGroups]="skillGroups"
           [selectedSkill]="selectedSkill()"
           (skillSelected)="onSkillSelected($event)"
         />
-      </section>
+      </app-section-card>
 
-      <section class="section-card info-block" aria-labelledby="education-title">
-        <header class="section-headline">
-          <p class="section-kicker">Base académica</p>
-          <h2 id="education-title">Formación académica</h2>
-        </header>
-        <ul class="clean-list educational-list">
+      <app-section-card [compact]="true" title="Formación académica">
+        <ul class="info-list educational-list">
           <li *ngFor="let item of cvData.education">
-            <div class="item-main">
+            <div class="item-row">
               <strong>{{ item.degree }}</strong>
               <span class="meta">{{ item.date }}</span>
             </div>
-            <span>{{ item.institution }}</span>
+            <span class="detail">{{ item.institution }}</span>
           </li>
         </ul>
-      </section>
+      </app-section-card>
 
-      <section class="section-card info-block" aria-labelledby="languages-title">
-        <header class="section-headline">
-          <p class="section-kicker">Comunicación internacional</p>
-          <h2 id="languages-title">Idiomas</h2>
-        </header>
-        <ul class="clean-list tags-list">
+      <app-section-card [compact]="true" title="Idiomas">
+        <ul class="tags-list">
           <li *ngFor="let language of cvData.languages">{{ language }}</li>
         </ul>
-      </section>
+      </app-section-card>
 
-      <section class="section-card info-block" aria-labelledby="courses-title">
-        <header class="section-headline">
-          <p class="section-kicker">Actualización continua</p>
-          <h2 id="courses-title">Cursos y otros datos</h2>
-        </header>
-
-        <ul class="clean-list detail-list">
+      <app-section-card [compact]="true" title="Cursos y otros datos">
+        <ul class="info-list course-list">
           <li *ngFor="let course of cvData.courses">
-            <span>{{ course.title }}<span *ngIf="course.hours"> ({{ course.hours }})</span></span>
-            <span class="meta">{{ course.provider }}</span>
+            <div class="item-row">
+              <strong>{{ course.title }}</strong>
+              <span class="meta" *ngIf="course.hours">{{ course.hours }}</span>
+            </div>
+            <span class="detail">{{ course.provider }}</span>
           </li>
-          <li *ngFor="let detail of cvData.otherDetails" class="plain-detail">{{ detail }}</li>
+          <li class="plain-detail" *ngFor="let detail of cvData.otherDetails">{{ detail }}</li>
         </ul>
-      </section>
+      </app-section-card>
     </aside>
   </section>
 </div>
