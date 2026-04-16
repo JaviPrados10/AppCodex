@@ -1,41 +1,44 @@
 <section class="skills-wrap" aria-labelledby="skills-title">
   <header class="section-header">
-    <p class="kicker">Stack tecnológico</p>
-    <h2 id="skills-title">Competencias técnicas</h2>
+    <p class="kicker">Capacidades</p>
+    <h2 id="skills-title">Skills técnicas</h2>
+    <p class="intro">Selecciona una competencia para filtrar experiencia o explora el stack por bloques funcionales.</p>
   </header>
 
-  <mat-chip-set class="all-filter" aria-label="Filtro principal de competencias">
-    <mat-chip-option class="skill-chip all-chip" [selected]="selectedSkill === null" (selectionChange)="selectSkill(null)">
-      Todas las competencias
-    </mat-chip-option>
-  </mat-chip-set>
+  <button class="all-button" type="button" [class.is-selected]="selectedSkill === null" (click)="selectSkill(null)">
+    Ver todo el historial
+  </button>
 
   <div class="groups" *ngIf="skillGroups.length; else flatSkills">
     <section class="skill-group" *ngFor="let group of skillGroups">
       <h3>{{ group.title }}</h3>
-      <mat-chip-set aria-label="Grupo de competencias">
-        <mat-chip-option
-          class="skill-chip"
+      <div class="chips" role="list" aria-label="Grupo de competencias">
+        <button
+          class="chip"
+          type="button"
+          role="listitem"
           *ngFor="let skill of group.skills"
-          [selected]="selectedSkill === skill"
-          (selectionChange)="selectSkill(skill)"
+          [class.is-selected]="selectedSkill === skill"
+          (click)="selectSkill(skill)"
         >
           {{ skill }}
-        </mat-chip-option>
-      </mat-chip-set>
+        </button>
+      </div>
     </section>
   </div>
 
   <ng-template #flatSkills>
-    <mat-chip-set aria-label="Filtro de competencias">
-      <mat-chip-option
-        class="skill-chip"
+    <div class="chips" role="list" aria-label="Filtro de competencias">
+      <button
+        class="chip"
+        type="button"
+        role="listitem"
         *ngFor="let skill of skills"
-        [selected]="selectedSkill === skill"
-        (selectionChange)="selectSkill(skill)"
+        [class.is-selected]="selectedSkill === skill"
+        (click)="selectSkill(skill)"
       >
         {{ skill }}
-      </mat-chip-option>
-    </mat-chip-set>
+      </button>
+    </div>
   </ng-template>
 </section>

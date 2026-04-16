@@ -1,156 +1,144 @@
-.hero-shell {
-  position: relative;
+:host {
+  display: block;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0f2f73 0%, #1646a7 55%, #1f5ad1 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(15, 47, 115, 0.22);
+  padding: 30px;
+  color: #ffffff;
+}
+
+.hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
-  gap: 20px;
-  padding: 24px;
-  border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
-  overflow: hidden;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 24px;
 }
 
-.hero-band {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 8px;
-  background: linear-gradient(to bottom, #1d4ed8, #1e3a8a);
+.identity-panel {
+  display: grid;
+  align-content: start;
+  gap: 14px;
 }
 
-.hero-card {
-  height: 100%;
-  border-radius: 14px;
-  border: 1px solid #e5e7eb;
-  box-shadow: none;
-  background: #ffffff;
-}
-
-.intro-card {
-  background: #fbfdff;
-}
-
-.intro-card mat-card-content,
-.contact-card mat-card-content {
-  padding-top: 4px;
-}
-
-.eyebrow {
+.eyebrow,
+.summary-kicker {
   margin: 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.09em;
-  color: #1e3a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
   font-weight: 700;
+  color: #c8dcff;
 }
 
 h1 {
-  margin: 8px 0 4px;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
-  line-height: 1.08;
-  color: #1f2937;
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.05;
   font-weight: 800;
 }
 
-h2 {
+.role {
   margin: 0;
-  color: #1d4ed8;
-  font-size: 1.06rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  color: #dbe8ff;
+  font-weight: 500;
 }
 
-.summary {
-  margin: 16px 0 0;
-  color: #4b5563;
-  line-height: 1.7;
-  max-width: 64ch;
-}
-
-.hero-metrics {
-  margin-top: 24px;
+.identity-metrics {
+  margin-top: 8px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-.metric-pill {
+.metric-card {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(2px);
   display: grid;
-  gap: 2px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
+  gap: 4px;
 }
 
-.metric-label {
-  font-size: 0.69rem;
-  letter-spacing: 0.08em;
-  color: #6b7280;
-  font-weight: 600;
+.metric-card span {
+  font-size: 0.8rem;
+  color: #dbe8ff;
 }
 
-.metric-pill strong {
-  font-size: 0.86rem;
-  color: #1f2937;
-  line-height: 1.35;
-}
-
-.contact-card mat-card-title {
-  color: #1f2937;
+.metric-card strong {
   font-size: 1rem;
-  font-weight: 700;
+  line-height: 1.3;
 }
 
-.contact-list {
-  list-style: none;
-  padding: 0;
+.summary-panel {
+  background: #ffffff;
+  color: #1f2937;
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  gap: 14px;
+  box-shadow: 0 12px 28px rgba(7, 22, 58, 0.14);
+}
+
+.summary-panel h2 {
+  margin: 4px 0 0;
+  color: #0f2f73;
+  font-size: 1.36rem;
+  line-height: 1.25;
+}
+
+.summary-text {
   margin: 0;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.contact-surface {
+  border-radius: 14px;
+  background: #f3f7ff;
+  border: 1px solid #d6e4ff;
+  padding: 14px;
+}
+
+.contact-surface h3 {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: #1e3a8a;
+}
+
+.contact-surface ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: grid;
   gap: 8px;
 }
 
-li {
+.contact-surface li {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #fbfdff;
-  color: #374151;
-  transition: border-color 180ms ease, background-color 180ms ease;
-}
-
-li:hover {
-  border-color: #bfdbfe;
-  background: #f8fbff;
+  align-items: flex-start;
+  gap: 8px;
+  color: #334155;
+  font-size: 0.91rem;
 }
 
 mat-icon {
   color: #1d4ed8;
-  font-size: 1rem;
   width: 1rem;
   height: 1rem;
+  font-size: 1rem;
+  margin-top: 1px;
 }
 
 @media (max-width: 960px) {
-  .hero-shell {
+  .hero {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .hero-grid {
     grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .hero-metrics {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 680px) {
-  .hero-shell {
-    padding: 16px;
-    gap: 12px;
-    border-radius: 14px;
-  }
-
-  h1 {
-    font-size: clamp(1.68rem, 8vw, 2.1rem);
   }
 }

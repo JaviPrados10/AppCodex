@@ -1,23 +1,24 @@
-<section class="cv-page" aria-label="Currículum interactivo">
+<div class="cv-shell" aria-label="Currículum interactivo">
   <app-cv-hero
-    class="hero"
     [name]="cvData.name"
     [role]="cvData.mainRole"
     [summary]="cvData.professionalSummary"
     [contact]="cvData.contact"
   />
 
-  <section class="main-layout" aria-label="Contenido principal del currículum">
-    <section class="section-panel experience-panel" aria-label="Trayectoria profesional">
-      <app-interactive-experience-list
-        [experiences]="filteredExperiences()"
-        [selectedIndex]="selectedExperienceIndex()"
-        (selectedIndexChange)="onExperienceSelected($event)"
-      />
-    </section>
+  <section class="content-grid" aria-label="Contenido principal del currículum">
+    <div class="primary-column">
+      <section class="section-card experience-panel" aria-label="Trayectoria profesional">
+        <app-interactive-experience-list
+          [experiences]="filteredExperiences()"
+          [selectedIndex]="selectedExperienceIndex()"
+          (selectedIndexChange)="onExperienceSelected($event)"
+        />
+      </section>
+    </div>
 
-    <aside class="side-column" aria-label="Información complementaria">
-      <section class="section-panel skills-panel" aria-label="Filtrado de competencias">
+    <aside class="secondary-column" aria-label="Información complementaria">
+      <section class="section-card skills-panel" aria-label="Filtrado de competencias">
         <app-skills-filter
           [skills]="cvData.technicalSkills"
           [skillGroups]="skillGroups"
@@ -26,7 +27,7 @@
         />
       </section>
 
-      <section class="section-panel info-block" aria-labelledby="education-title">
+      <section class="section-card info-block" aria-labelledby="education-title">
         <header class="section-headline">
           <p class="section-kicker">Base académica</p>
           <h2 id="education-title">Formación académica</h2>
@@ -42,7 +43,7 @@
         </ul>
       </section>
 
-      <section class="section-panel info-block" aria-labelledby="languages-title">
+      <section class="section-card info-block" aria-labelledby="languages-title">
         <header class="section-headline">
           <p class="section-kicker">Comunicación internacional</p>
           <h2 id="languages-title">Idiomas</h2>
@@ -52,7 +53,7 @@
         </ul>
       </section>
 
-      <section class="section-panel info-block" aria-labelledby="courses-title">
+      <section class="section-card info-block" aria-labelledby="courses-title">
         <header class="section-headline">
           <p class="section-kicker">Actualización continua</p>
           <h2 id="courses-title">Cursos y otros datos</h2>
@@ -68,4 +69,4 @@
       </section>
     </aside>
   </section>
-</section>
+</div>
