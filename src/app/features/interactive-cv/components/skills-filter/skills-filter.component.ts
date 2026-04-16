@@ -2,6 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 
+export interface SkillGroup {
+  title: string;
+  skills: string[];
+}
+
 @Component({
   selector: 'app-skills-filter',
   standalone: true,
@@ -12,6 +17,7 @@ import { MatChipsModule } from '@angular/material/chips';
 })
 export class SkillsFilterComponent {
   @Input({ required: true }) skills: string[] = [];
+  @Input() skillGroups: SkillGroup[] = [];
   @Input() selectedSkill: string | null = null;
   @Output() skillSelected = new EventEmitter<string | null>();
 
