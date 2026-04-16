@@ -6,21 +6,21 @@
   </div>
 
   <header class="hero" id="inicio" data-reveal>
-    <div class="floating-navbar">
+    <div class="floating-navbar" [class.scrolled]="isNavbarScrolled">
       <div class="nav-left">
-        <span class="logo">Javier Prados</span>
+        <a class="logo" href="#inicio" (click)="onNavLinkClick($event, 'inicio')">Javier Prados</a>
       </div>
 
-      <div class="nav-center">
-        <a href="#experiencia">Experiencia</a>
-        <a href="#skills">Skills</a>
-        <a href="#formacion">Formación</a>
-        <a href="#contacto">Contacto</a>
-      </div>
+      <nav class="nav-center" aria-label="Navegación principal">
+        <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
+        <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
+        <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
+        <a href="#contacto" (click)="onNavLinkClick($event, 'contacto')">Contacto</a>
+      </nav>
 
       <div class="nav-right">
-        <button class="btn secondary">Contactar</button>
-        <button class="btn primary">Descargar CV</button>
+        <button type="button" class="btn secondary" (click)="openContactEmail()">Contactar</button>
+        <button type="button" class="btn primary" (click)="downloadCv()">Descargar CV</button>
       </div>
     </div>
 

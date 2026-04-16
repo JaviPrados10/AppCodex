@@ -95,75 +95,140 @@
   border-radius: 28px;
   padding: clamp(1.2rem, 2.8vw, 2.2rem);
   box-shadow: 0 24px 50px rgba(31, 40, 84, 0.3);
-  margin-top: 7.5rem;
+  margin-top: 5.6rem;
   margin-bottom: 1.55rem;
   transition: background 260ms ease, box-shadow 260ms ease;
 }
 
 .floating-navbar {
   position: fixed;
-  top: 20px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  max-width: 1100px;
+  width: min(92%, 1080px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  z-index: 1000;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  padding: 0.68rem 1.12rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 24px rgba(30, 36, 51, 0.12);
+  z-index: 1000;
+  transition: top 220ms ease, padding 220ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.floating-navbar.scrolled {
+  top: 10px;
+  padding: 0.58rem 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(228, 235, 255, 0.95);
+  box-shadow: 0 14px 30px rgba(24, 33, 65, 0.16);
 }
 
 .logo {
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 0.98rem;
   color: #1f2937;
+  letter-spacing: 0.02em;
+  text-decoration: none;
 }
 
 .nav-center {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 0.42rem;
 }
 
 .nav-center a {
   text-decoration: none;
-  color: #1f2937;
-  font-size: 14px;
-  transition: 0.2s;
+  color: #27314d;
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.5rem 0.7rem;
+  border-radius: 999px;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
 .nav-center a:hover {
   color: #1d4ed8;
+  background: rgba(29, 78, 216, 0.09);
 }
 
 .nav-right {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 0.56rem;
 }
 
 .btn {
-  padding: 8px 14px;
-  border-radius: 12px;
-  border: none;
+  padding: 0.5rem 0.86rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
   cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
 }
 
 .btn.primary {
   background: #1d4ed8;
-  color: white;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(29, 78, 216, 0.25);
+}
+
+.btn.primary:hover {
+  background: #1b45c2;
 }
 
 .btn.secondary {
-  background: transparent;
-  border: 1px solid #1d4ed8;
+  background: rgba(255, 255, 255, 0.36);
+  border-color: rgba(29, 78, 216, 0.3);
   color: #1d4ed8;
+}
+
+.btn.secondary:hover {
+  background: rgba(29, 78, 216, 0.08);
+}
+
+
+:host-context(body.dark-mode) .floating-navbar {
+  background: rgba(20, 30, 52, 0.76);
+  border-color: rgba(145, 175, 252, 0.28);
+  box-shadow: 0 10px 24px rgba(6, 11, 22, 0.45);
+}
+
+:host-context(body.dark-mode) .floating-navbar.scrolled {
+  background: rgba(17, 26, 45, 0.9);
+  border-color: rgba(152, 180, 255, 0.34);
+}
+
+:host-context(body.dark-mode) .logo,
+:host-context(body.dark-mode) .nav-center a {
+  color: #d8e4ff;
+}
+
+:host-context(body.dark-mode) .nav-center a:hover {
+  color: #ffffff;
+  background: rgba(132, 170, 255, 0.2);
+}
+
+:host-context(body.dark-mode) .btn.secondary {
+  background: rgba(34, 52, 86, 0.46);
+  border-color: rgba(155, 186, 255, 0.35);
+  color: #d7e5ff;
+}
+
+:host-context(body.dark-mode) .btn.secondary:hover {
+  background: rgba(75, 110, 184, 0.38);
 }
 
 .hero-grid {
@@ -250,6 +315,16 @@
 .hero-contact a {
   text-underline-offset: 3px;
   font-weight: 600;
+}
+
+#inicio,
+#experiencia,
+#skills,
+#formacion,
+#idiomas,
+#otros,
+#contacto {
+  scroll-margin-top: 6.6rem;
 }
 
 .cv-layout {
@@ -514,8 +589,8 @@ button:focus-visible {
 
 @media (max-width: 1080px) {
   .floating-navbar {
-    width: calc(100% - 2rem);
-    padding: 10px 16px;
+    width: calc(100% - 1.2rem);
+    padding: 0.58rem 0.8rem;
     flex-wrap: wrap;
   }
 
@@ -543,8 +618,8 @@ button:focus-visible {
   }
 
   .floating-navbar {
-    top: 12px;
-    border-radius: 16px;
+    top: 10px;
+    border-radius: 15px;
     justify-content: center;
   }
 

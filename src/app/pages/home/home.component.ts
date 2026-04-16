@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { CV_DATA } from '../../data/cv.data';
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   activeSection = 'inicio';
   isDarkMode = false;
+  isNavbarScrolled = false;
 
   private sectionObserver?: IntersectionObserver;
   private revealObserver?: IntersectionObserver;
@@ -85,6 +86,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isActiveSection(sectionId: string): boolean {
     return this.activeSection === sectionId;
+  }
+
+
+  onNavLinkClick(event: Event, sectionId: string): void {
+    event.preventDefault();
+
+    const target = document.getElementById(sectionId);
+    if (!target) {
+      return;
+    }
+
+    const headerOffset = 108;
+    const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: Math.max(0, elementPosition - headerOffset),
+      behavior: 'smooth'
+    });
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.isNavbarScrolled = window.scrollY > 18;
   }
 
   private applyTheme(): void {
