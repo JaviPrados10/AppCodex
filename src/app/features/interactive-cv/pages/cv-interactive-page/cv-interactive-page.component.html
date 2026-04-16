@@ -8,7 +8,7 @@
 
   <div class="topbar-shell" [class.is-compact]="isStickyCompact()">
     <header class="premium-topbar" aria-label="Cabecera premium flotante del perfil profesional">
-      <a class="brand-block" href="#hero" aria-label="Volver al perfil principal">
+      <a class="brand-block" href="#hero" aria-label="Volver al perfil principal" (click)="onNavClick($event, 'hero')">
         <span class="brand-mark">JP</span>
         <span class="brand-copy">
           <strong>Javier Prados</strong>
@@ -22,14 +22,15 @@
           [attr.href]="'#' + item.id"
           [class.active]="activeSection() === item.id"
           [attr.data-optional]="item.optionalOnMobile ? 'true' : null"
+          (click)="onNavClick($event, item.id)"
         >
           {{ item.label }}
         </a>
       </nav>
 
       <div class="topbar-cta" aria-label="Acciones rápidas">
-        <a class="subtle-btn" href="#contact">Contactar</a>
-        <button type="button" class="primary-btn" (click)="downloadCv()">Descargar CV</button>
+        <a class="subtle-btn" href="#contact" (click)="onContactClick($event)">Contactar</a>
+        <a class="primary-btn" [href]="cvDownloadUrl" download="Javier-Prados-CV.pdf">Descargar CV</a>
         <a class="github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           GitHub
         </a>
@@ -38,7 +39,6 @@
   </div>
 
   <section id="hero" class="hero-stage">
-
     <app-cv-hero
       [name]="cvData.name"
       [role]="cvData.mainRole"

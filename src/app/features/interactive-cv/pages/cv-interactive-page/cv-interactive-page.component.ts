@@ -29,6 +29,7 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
 
   readonly isStickyCompact = signal(false);
   readonly activeSection = signal('experience');
+  readonly cvDownloadUrl = 'assets/cv/javier-prados-cv.pdf';
   readonly navItems: NavigationItem[] = [
     { id: 'experience', label: 'Experiencia' },
     { id: 'toolkit', label: 'Skills' },
@@ -74,12 +75,36 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
     this.selectedExperienceIndex.set(index);
   }
 
-  downloadCv(): void {
-    window.print();
+  onNavClick(event: Event, sectionId: string): void {
+    event.preventDefault();
+    this.scrollToSection(sectionId);
+  }
+
+  onContactClick(event: Event): void {
+    event.preventDefault();
+    this.scrollToSection('contact');
+  }
+
+  private scrollToSection(sectionId: string): void {
+    const targetSection = document.getElementById(sectionId);
+
+    if (!targetSection) {
+      return;
+    }
+
+    const navOffset = 96;
+    const targetTop = window.scrollY + targetSection.getBoundingClientRect().top - navOffset;
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: 'smooth'
+    });
+
+    this.activeSection.set(sectionId);
   }
 
   private readonly updateStickyState = (): void => {
-    this.isStickyCompact.set(window.scrollY > 34);
+    this.isStickyCompact.set(window.scrollY > 32);
   };
 
   private observeSections(): void {
@@ -97,8 +122,8 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
       },
       {
         root: null,
-        rootMargin: '-35% 0px -45% 0px',
-        threshold: [0.2, 0.45, 0.7]
+        rootMargin: '-30% 0px -52% 0px',
+        threshold: [0.25, 0.5, 0.75]
       }
     );
 
