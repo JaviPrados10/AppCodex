@@ -13,8 +13,13 @@
       (closed)="clearSelection()"
     >
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ experience.company }}</mat-panel-title>
-        <mat-panel-description>{{ experience.role }} · {{ experience.dateRange }}</mat-panel-description>
+        <div class="panel-heading">
+          <div class="panel-main">
+            <p class="company">{{ experience.company }}</p>
+            <p class="role">{{ experience.role }}</p>
+          </div>
+          <p class="date">{{ experience.dateRange }}</p>
+        </div>
       </mat-expansion-panel-header>
 
       <ul class="responsibilities">

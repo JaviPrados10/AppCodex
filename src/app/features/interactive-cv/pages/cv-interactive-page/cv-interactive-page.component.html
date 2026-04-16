@@ -1,7 +1,4 @@
-<section class="cv-page" aria-label="Currículum interactivo premium">
-  <div class="bg-orb orb-primary" aria-hidden="true"></div>
-  <div class="bg-orb orb-secondary" aria-hidden="true"></div>
-
+<section class="cv-page" aria-label="Currículum interactivo">
   <app-cv-hero
     class="hero"
     [name]="cvData.name"
@@ -33,9 +30,11 @@
     </header>
     <ul class="clean-list educational-list">
       <li *ngFor="let item of cvData.education">
-        <strong>{{ item.degree }}</strong>
+        <div class="item-main">
+          <strong>{{ item.degree }}</strong>
+          <span class="meta">{{ item.date }}</span>
+        </div>
         <span>{{ item.institution }}</span>
-        <span class="meta">{{ item.date }}</span>
       </li>
     </ul>
   </section>

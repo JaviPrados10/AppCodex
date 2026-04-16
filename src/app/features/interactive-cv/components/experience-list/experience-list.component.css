@@ -1,6 +1,6 @@
 .experience-wrap {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.95rem;
 }
 
 .section-header {
@@ -12,28 +12,30 @@
   margin: 0;
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #7bc8ff;
-  font-weight: 600;
+  letter-spacing: 0.09em;
+  color: #3552a2;
+  font-weight: 700;
 }
 
 h2 {
   margin: 0;
-  color: #edf4ff;
+  color: #1a1f2b;
   font-size: 1.16rem;
+  font-weight: 700;
 }
 
 .timeline-accordion {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.75rem;
 }
 
 .timeline-item {
   position: relative;
   margin-left: 1rem;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(125, 149, 196, 0.24);
-  background: linear-gradient(160deg, rgba(19, 31, 49, 0.9), rgba(14, 23, 37, 0.92));
+  border-radius: 0.75rem;
+  border: 1px solid #e1e7f0;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
 }
 
 .timeline-item::before {
@@ -44,8 +46,8 @@ h2 {
   width: 0.72rem;
   height: 0.72rem;
   border-radius: 50%;
-  border: 2px solid rgba(118, 187, 255, 0.75);
-  background: #12243a;
+  border: 2px solid #5570b7;
+  background: #f6f9ff;
 }
 
 .timeline-item::after {
@@ -55,34 +57,59 @@ h2 {
   top: 2rem;
   bottom: -0.9rem;
   width: 2px;
-  background: linear-gradient(to bottom, rgba(109, 178, 255, 0.65), rgba(109, 178, 255, 0));
+  background: linear-gradient(to bottom, #b7c5df, rgba(183, 197, 223, 0));
 }
 
 .timeline-item:last-child::after {
   display: none;
 }
 
-mat-panel-title {
-  color: #f2f7ff;
-  font-weight: 600;
+.panel-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
-mat-panel-description {
-  color: #abc2ea;
+.panel-main {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.company {
+  margin: 0;
+  color: #1f2c46;
+  font-weight: 700;
+}
+
+.role {
+  margin: 0;
+  color: #475771;
+  font-size: 0.9rem;
+}
+
+.date {
+  margin: 0;
+  color: #5b6b86;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .responsibilities {
-  margin: 0 0 1rem;
+  margin: 0 0 0.95rem;
   padding-left: 1.1rem;
   display: grid;
-  gap: 0.48rem;
-  color: #d8e4fb;
+  gap: 0.46rem;
+  color: #2f3e58;
+  line-height: 1.55;
 }
 
 mat-chip {
-  --mdc-chip-elevated-container-color: rgba(40, 81, 131, 0.28);
-  --mdc-chip-label-text-color: #d8e8ff;
-  border: 1px solid rgba(104, 170, 255, 0.34);
+  --mdc-chip-elevated-container-color: #f4f7fc;
+  --mdc-chip-label-text-color: #2b3f67;
+  border: 1px solid #d5dfef;
 }
 
 @media (max-width: 680px) {
@@ -96,5 +123,14 @@ mat-chip {
 
   .timeline-item::after {
     left: -0.45rem;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .date {
+    white-space: normal;
   }
 }
