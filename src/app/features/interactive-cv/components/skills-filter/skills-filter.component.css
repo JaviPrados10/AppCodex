@@ -1,6 +1,6 @@
 .skills-wrap {
   display: grid;
-  gap: 16px;
+  gap: 15px;
 }
 
 .section-header {
@@ -10,37 +10,39 @@
 
 h2 {
   margin: 0;
-  color: #0f172a;
-  font-size: 1.03rem;
+  color: #112247;
+  font-size: 1.04rem;
+  letter-spacing: -0.01em;
 }
 
 .intro {
   margin: 0;
-  color: #334155;
+  color: #425470;
   font-size: 0.88rem;
-  line-height: 1.6;
+  line-height: 1.58;
 }
 
 .all-button {
   justify-self: start;
-  border: 1px solid #bfdbfe;
-  background: linear-gradient(145deg, #eff6ff 0%, #dbeafe 100%);
-  color: #1e3a8a;
+  border: 1px solid #bdd0f7;
+  background: linear-gradient(145deg, #edf3ff 0%, #dae7ff 100%);
+  color: #23469e;
   border-radius: 999px;
   font-weight: 700;
   padding: 8px 12px;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .all-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgb(37 99 235 / 18%);
+  transform: translateY(-2px);
+  border-color: #9ebcf8;
+  box-shadow: 0 12px 24px rgb(37 99 235 / 17%);
 }
 
 .all-button.is-selected {
-  border-color: #1e3a8a;
-  background: #1e3a8a;
+  border-color: #20439a;
+  background: #20439a;
   color: #ffffff;
 }
 
@@ -50,7 +52,7 @@ h2 {
 }
 
 .skill-group {
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #dde7f6;
   padding-top: 12px;
   display: grid;
   gap: 8px;
@@ -58,7 +60,7 @@ h2 {
 
 h3 {
   margin: 0;
-  color: #334155;
+  color: #3f5070;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   font-size: 0.68rem;
@@ -72,25 +74,26 @@ h3 {
 }
 
 .chip {
-  border: 1px solid #dbeafe;
-  background: #f8fafc;
-  color: #334155;
+  border: 1px solid #d3def1;
+  background: #f5f8ff;
+  color: #324665;
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+  transition: transform 210ms ease, border-color 210ms ease, background-color 210ms ease, box-shadow 210ms ease;
 }
 
 .chip:hover {
-  transform: translateY(-1px);
-  border-color: #93c5fd;
-  background: #eff6ff;
+  transform: translateY(-2px);
+  border-color: #9fbef8;
+  background: #edf3ff;
+  box-shadow: 0 10px 20px rgb(37 99 235 / 11%);
 }
 
 .chip.is-selected {
-  border-color: #1e3a8a;
-  background: #1e3a8a;
+  border-color: #20439a;
+  background: #20439a;
   color: #ffffff;
 }
