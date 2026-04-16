@@ -6,32 +6,21 @@
   </div>
 
   <header class="hero" id="inicio" data-reveal>
-    <div class="hero-topbar">
-      <span class="brand-pill">Portfolio profesional · CV online</span>
+    <div class="floating-navbar">
+      <div class="nav-left">
+        <span class="logo">Javier Prados</span>
+      </div>
 
-      <nav class="section-nav" aria-label="Navegación por secciones">
-        <a
-          *ngFor="let item of navItems"
-          [href]="'#' + item.id"
-          class="section-link"
-          [class.active]="isActiveSection(item.id)"
-        >
-          {{ item.label }}
-        </a>
-      </nav>
+      <div class="nav-center">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#skills">Skills</a>
+        <a href="#formacion">Formación</a>
+        <a href="#contacto">Contacto</a>
+      </div>
 
-      <div class="hero-actions">
-        <button
-          type="button"
-          class="icon-toggle"
-          (click)="toggleTheme()"
-          [attr.aria-label]="isDarkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-          [attr.title]="isDarkMode ? 'Modo claro' : 'Modo oscuro'"
-        >
-          <span aria-hidden="true">{{ isDarkMode ? '☀️' : '🌙' }}</span>
-        </button>
-        <button type="button" class="button-secondary" (click)="openContactEmail()">Contactar</button>
-        <button type="button" class="button-primary" (click)="downloadCv()">Descargar CV</button>
+      <div class="nav-right">
+        <button class="btn secondary">Contactar</button>
+        <button class="btn primary">Descargar CV</button>
       </div>
     </div>
 
@@ -110,7 +99,7 @@
     </main>
 
     <aside class="side-column" aria-label="Información complementaria">
-      <section class="card sidebar-card" id="competencias" data-reveal>
+      <section class="card sidebar-card" id="skills" data-reveal>
         <h3>Skills técnicas</h3>
         <ul class="chip-list">
           <li *ngFor="let skill of cvData.technicalSkills">{{ skill }}</li>

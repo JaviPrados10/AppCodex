@@ -3,12 +3,6 @@
   min-height: 100vh;
 }
 
-.app-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
 .app-content {
-  min-height: calc(100vh - 64px);
+  min-height: 100vh;
 }
