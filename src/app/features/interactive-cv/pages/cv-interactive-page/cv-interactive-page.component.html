@@ -8,7 +8,7 @@
 
   <div class="topbar-shell" [class.is-compact]="isStickyCompact()">
     <header class="premium-topbar" aria-label="Cabecera premium flotante del perfil profesional">
-      <a class="brand-capsule" href="#hero" aria-label="Volver al perfil principal">
+      <a class="brand-block" href="#hero" aria-label="Volver al perfil principal">
         <span class="brand-mark">JP</span>
         <span class="brand-copy">
           <strong>Javier Prados</strong>
@@ -28,10 +28,9 @@
       </nav>
 
       <div class="topbar-cta" aria-label="Acciones rápidas">
-        <a class="ghost-btn" href="#contact">Contactar</a>
-        <button type="button" class="solid-btn" (click)="downloadCv()">Descargar CV</button>
-        <a class="icon-btn" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <span aria-hidden="true">◢</span>
+        <a class="subtle-btn" href="#contact">Contactar</a>
+        <button type="button" class="primary-btn" (click)="downloadCv()">Descargar CV</button>
+        <a class="github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           GitHub
         </a>
       </div>
