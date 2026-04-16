@@ -1,11 +1,15 @@
-<section aria-labelledby="skills-title">
-  <h2 id="skills-title">Competencias técnicas</h2>
+<section class="skills-wrap" aria-labelledby="skills-title">
+  <header class="section-header">
+    <p class="kicker">Stack tecnológico</p>
+    <h2 id="skills-title">Competencias técnicas</h2>
+  </header>
 
-  <mat-chip-set>
-    <mat-chip-option [selected]="selectedSkill === null" (selectionChange)="selectSkill(null)">
+  <mat-chip-set aria-label="Filtro de competencias">
+    <mat-chip-option class="skill-chip" [selected]="selectedSkill === null" (selectionChange)="selectSkill(null)">
       Todas
     </mat-chip-option>
     <mat-chip-option
+      class="skill-chip"
       *ngFor="let skill of skills"
       [selected]="selectedSkill === skill"
       (selectionChange)="selectSkill(skill)"

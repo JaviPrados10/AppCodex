@@ -1,56 +1,69 @@
-<section class="cv-page">
+<section class="cv-page" aria-label="Currículum interactivo premium">
+  <div class="bg-orb orb-primary" aria-hidden="true"></div>
+  <div class="bg-orb orb-secondary" aria-hidden="true"></div>
+
   <app-cv-hero
+    class="hero"
     [name]="cvData.name"
     [role]="cvData.mainRole"
     [summary]="cvData.professionalSummary"
     [contact]="cvData.contact"
   />
 
-  <app-skills-filter
-    [skills]="cvData.technicalSkills"
-    [selectedSkill]="selectedSkill()"
-    (skillSelected)="onSkillSelected($event)"
-  />
+  <section class="section-panel skills-panel" aria-label="Filtrado de competencias">
+    <app-skills-filter
+      [skills]="cvData.technicalSkills"
+      [selectedSkill]="selectedSkill()"
+      (skillSelected)="onSkillSelected($event)"
+    />
+  </section>
 
-  <app-interactive-experience-list
-    [experiences]="filteredExperiences()"
-    [selectedIndex]="selectedExperienceIndex()"
-    (selectedIndexChange)="onExperienceSelected($event)"
-  />
+  <section class="section-panel experience-panel" aria-label="Trayectoria profesional">
+    <app-interactive-experience-list
+      [experiences]="filteredExperiences()"
+      [selectedIndex]="selectedExperienceIndex()"
+      (selectedIndexChange)="onExperienceSelected($event)"
+    />
+  </section>
 
-  <mat-card>
-    <mat-card-header><mat-card-title>Formación académica</mat-card-title></mat-card-header>
-    <mat-card-content>
-      <ul>
-        <li *ngFor="let item of cvData.education">
-          <strong>{{ item.degree }}</strong> · {{ item.institution }} · {{ item.date }}
-        </li>
-      </ul>
-    </mat-card-content>
-  </mat-card>
+  <section class="section-panel info-block" aria-labelledby="education-title">
+    <header class="section-headline">
+      <p class="section-kicker">Base académica</p>
+      <h2 id="education-title">Formación académica</h2>
+    </header>
+    <ul class="clean-list educational-list">
+      <li *ngFor="let item of cvData.education">
+        <strong>{{ item.degree }}</strong>
+        <span>{{ item.institution }}</span>
+        <span class="meta">{{ item.date }}</span>
+      </li>
+    </ul>
+  </section>
 
   <div class="two-columns">
-    <mat-card>
-      <mat-card-header><mat-card-title>Idiomas</mat-card-title></mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li *ngFor="let language of cvData.languages">{{ language }}</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
+    <section class="section-panel info-block" aria-labelledby="languages-title">
+      <header class="section-headline">
+        <p class="section-kicker">Comunicación internacional</p>
+        <h2 id="languages-title">Idiomas</h2>
+      </header>
+      <ul class="clean-list tags-list">
+        <li *ngFor="let language of cvData.languages">{{ language }}</li>
+      </ul>
+    </section>
 
-    <mat-card>
-      <mat-card-header><mat-card-title>Cursos y otros datos</mat-card-title></mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li *ngFor="let course of cvData.courses">
-            {{ course.title }}<span *ngIf="course.hours"> ({{ course.hours }})</span> – {{ course.provider }}
-          </li>
-          <li *ngFor="let detail of cvData.otherDetails">{{ detail }}</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
+    <section class="section-panel info-block" aria-labelledby="courses-title">
+      <header class="section-headline">
+        <p class="section-kicker">Actualización continua</p>
+        <h2 id="courses-title">Cursos y otros datos</h2>
+      </header>
+
+      <ul class="clean-list detail-list">
+        <li *ngFor="let course of cvData.courses">
+          <span>{{ course.title }}<span *ngIf="course.hours"> ({{ course.hours }})</span></span>
+          <span class="meta">{{ course.provider }}</span>
+        </li>
+        <li *ngFor="let detail of cvData.otherDetails" class="plain-detail">{{ detail }}</li>
+      </ul>
+    </section>
   </div>
-
-  <mat-divider />
 </section>

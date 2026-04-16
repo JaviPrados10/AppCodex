@@ -1,25 +1,36 @@
 <section class="hero-grid" aria-label="Presentación profesional">
-  <mat-card>
+  <mat-card class="hero-card intro-card">
     <mat-card-content>
       <p class="eyebrow">CV Interactivo</p>
       <h1>{{ name }}</h1>
       <h2>{{ role }}</h2>
-      <p>{{ summary }}</p>
+      <p class="summary">{{ summary }}</p>
+
+      <div class="hero-metrics" aria-label="Indicadores de perfil">
+        <div class="metric-pill">
+          <span class="metric-label">Perfil</span>
+          <strong>Senior</strong>
+        </div>
+        <div class="metric-pill">
+          <span class="metric-label">Orientación</span>
+          <strong>Arquitectura & calidad</strong>
+        </div>
+      </div>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="hero-card contact-card">
     <mat-card-header>
       <mat-card-title>Contacto</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <ul class="contact-list">
-        <li><mat-icon aria-hidden="true">location_on</mat-icon> {{ contact.address }}</li>
-        <li><mat-icon aria-hidden="true">phone_iphone</mat-icon> {{ contact.mobilePhone }}</li>
-        <li><mat-icon aria-hidden="true">phone</mat-icon> {{ contact.landlinePhone }}</li>
-        <li><mat-icon aria-hidden="true">mail</mat-icon> {{ contact.email }}</li>
-        <li><mat-icon aria-hidden="true">cake</mat-icon> {{ contact.birthDate }}</li>
-        <li><mat-icon aria-hidden="true">flag</mat-icon> {{ contact.nationality }}</li>
+        <li><mat-icon aria-hidden="true">location_on</mat-icon> <span>{{ contact.address }}</span></li>
+        <li><mat-icon aria-hidden="true">phone_iphone</mat-icon> <span>{{ contact.mobilePhone }}</span></li>
+        <li><mat-icon aria-hidden="true">phone</mat-icon> <span>{{ contact.landlinePhone }}</span></li>
+        <li><mat-icon aria-hidden="true">mail</mat-icon> <span>{{ contact.email }}</span></li>
+        <li><mat-icon aria-hidden="true">cake</mat-icon> <span>{{ contact.birthDate }}</span></li>
+        <li><mat-icon aria-hidden="true">flag</mat-icon> <span>{{ contact.nationality }}</span></li>
       </ul>
     </mat-card-content>
   </mat-card>
