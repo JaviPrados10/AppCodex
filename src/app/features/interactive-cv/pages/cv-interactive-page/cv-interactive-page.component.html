@@ -6,24 +6,34 @@
     <span class="grid-shade"></span>
   </div>
 
-  <header class="top-header" aria-label="Cabecera del perfil profesional">
-    <div class="branding">
-      <p class="tag">Currículum interactivo</p>
-      <div>
-        <h1>{{ cvData.name }}</h1>
-        <p>{{ cvData.mainRole }}</p>
+  <section id="hero" class="hero-stage">
+    <header
+      class="floating-topbar"
+      [class.is-compact]="isStickyCompact()"
+      aria-label="Navegación premium del perfil profesional"
+    >
+      <a class="brand-block" href="#hero" aria-label="Volver al perfil principal">
+        <span class="brand-name">{{ cvData.name }}</span>
+        <span class="brand-role">Angular Developer</span>
+      </a>
+
+      <nav class="topbar-nav" aria-label="Navegación por secciones">
+        <a
+          *ngFor="let item of navItems"
+          [attr.href]="'#' + item.id"
+          [class.active]="activeSection() === item.id"
+          [attr.data-optional]="item.optionalOnMobile ? 'true' : null"
+        >
+          {{ item.label }}
+        </a>
+      </nav>
+
+      <div class="topbar-actions" aria-label="Acciones de contacto y currículum">
+        <a class="action-link" href="#contact">Contactar</a>
+        <button type="button" class="action-button" (click)="downloadCv()">Descargar CV</button>
       </div>
-    </div>
+    </header>
 
-    <nav class="quick-nav" aria-label="Navegación por secciones">
-      <a href="#hero">Perfil</a>
-      <a href="#experience">Experiencia</a>
-      <a href="#toolkit">Stack</a>
-      <a href="#learning">Formación</a>
-    </nav>
-  </header>
-
-  <section id="hero">
     <app-cv-hero
       [name]="cvData.name"
       [role]="cvData.mainRole"
