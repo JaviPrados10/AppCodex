@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -11,6 +12,12 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 260ms ease, color 260ms ease;
+}
+
+body.dark-mode {
+  background: #101726;
+  color: #d9e5ff;
 }
 
 * {

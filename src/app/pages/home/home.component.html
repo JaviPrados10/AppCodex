@@ -5,10 +5,33 @@
     <span class="shape shape-three"></span>
   </div>
 
-  <header class="hero" id="inicio">
+  <header class="hero" id="inicio" data-reveal>
     <div class="hero-topbar">
       <span class="brand-pill">CV Portfolio</span>
-      <a class="hero-link" href="#experiencia">Ver experiencia</a>
+
+      <nav class="section-nav" aria-label="Navegación por secciones">
+        <a
+          *ngFor="let item of navItems"
+          [href]="'#' + item.id"
+          class="section-link"
+          [class.active]="isActiveSection(item.id)"
+        >
+          {{ item.label }}
+        </a>
+      </nav>
+
+      <div class="hero-actions">
+        <button
+          type="button"
+          class="icon-toggle"
+          (click)="toggleTheme()"
+          [attr.aria-label]="isDarkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
+          [attr.title]="isDarkMode ? 'Modo claro' : 'Modo oscuro'"
+        >
+          <span aria-hidden="true">{{ isDarkMode ? '☀️' : '🌙' }}</span>
+        </button>
+        <button type="button" class="button-primary" (click)="downloadCv()">Descargar CV (PDF)</button>
+      </div>
     </div>
 
     <div class="hero-grid">
@@ -17,6 +40,13 @@
         <h1>{{ cvData.name }}</h1>
         <h2>{{ cvData.mainRole }}</h2>
         <p class="hero-summary">{{ cvData.professionalSummary }}</p>
+
+        <section class="stack-highlight" aria-label="Stack destacado">
+          <p>Stack destacado</p>
+          <ul class="chip-list premium">
+            <li *ngFor="let tech of highlightedStack">{{ tech }}</li>
+          </ul>
+        </section>
       </div>
 
       <aside class="hero-contact" aria-label="Información de contacto">
@@ -53,13 +83,13 @@
 
   <section class="cv-layout" aria-label="Contenido del currículum">
     <main class="main-column" id="experiencia" aria-label="Experiencia profesional">
-      <div class="section-title-wrap">
+      <div class="section-title-wrap" data-reveal>
         <p class="section-kicker">Trayectoria</p>
         <h3>Experiencia profesional</h3>
       </div>
 
       <div class="timeline">
-        <article class="timeline-item card" *ngFor="let item of cvData.experience">
+        <article class="timeline-item card" data-reveal *ngFor="let item of cvData.experience">
           <span class="timeline-dot" aria-hidden="true"></span>
           <p class="timeline-date">{{ item.dateRange }}</p>
           <h4>{{ item.role }}</h4>
@@ -77,14 +107,14 @@
     </main>
 
     <aside class="side-column" aria-label="Información complementaria">
-      <section class="card sidebar-card" id="competencias">
+      <section class="card sidebar-card" id="competencias" data-reveal>
         <h3>Skills técnicas</h3>
         <ul class="chip-list">
           <li *ngFor="let skill of cvData.technicalSkills">{{ skill }}</li>
         </ul>
       </section>
 
-      <section class="card sidebar-card" id="formacion">
+      <section class="card sidebar-card" id="formacion" data-reveal>
         <h3>Formación académica</h3>
         <ul class="compact-list">
           <li *ngFor="let item of cvData.education">
@@ -95,14 +125,14 @@
         </ul>
       </section>
 
-      <section class="card sidebar-card" id="idiomas">
+      <section class="card sidebar-card" id="idiomas" data-reveal>
         <h3>Idiomas</h3>
         <ul class="compact-list simple">
           <li *ngFor="let language of cvData.languages">{{ language }}</li>
         </ul>
       </section>
 
-      <section class="card sidebar-card" id="otros">
+      <section class="card sidebar-card" id="otros" data-reveal>
         <h3>Cursos y otros datos</h3>
         <ul class="compact-list">
           <li *ngFor="let course of cvData.courses">
