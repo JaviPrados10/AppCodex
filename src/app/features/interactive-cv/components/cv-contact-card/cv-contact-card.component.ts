@@ -17,4 +17,13 @@ export class CvContactCardComponent {
 
   readonly githubUrl = 'https://github.com/';
   readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
+
+  downloadCv(event: Event): void {
+    event.preventDefault();
+
+    const link = document.createElement('a');
+    link.href = this.cvDownloadUrl;
+    link.download = `CV-${this.profile.name.replace(/\s+/g, '-')}.pdf`;
+    link.click();
+  }
 }
