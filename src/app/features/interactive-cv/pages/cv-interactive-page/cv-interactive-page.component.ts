@@ -29,7 +29,7 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
 
   readonly isStickyCompact = signal(false);
   readonly activeSection = signal('experience');
-  readonly cvDownloadUrl = 'assets/cv/javier-prados-cv.pdf';
+  readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
   readonly navItems: NavigationItem[] = [
     { id: 'experience', label: 'Experiencia' },
     { id: 'toolkit', label: 'Skills' },

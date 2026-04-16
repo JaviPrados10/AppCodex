@@ -16,5 +16,5 @@ export class CvContactCardComponent {
   @Input({ required: true }) profile!: CvProfile;
 
   readonly githubUrl = 'https://github.com/';
-  readonly cvDownloadUrl = 'assets/cv/javier-prados-cv.pdf';
+  readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
 }
