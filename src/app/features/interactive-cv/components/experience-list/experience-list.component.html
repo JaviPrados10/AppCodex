@@ -1,13 +1,13 @@
 <section class="experience-wrap" aria-labelledby="experience-title">
   <header class="section-header">
-    <p class="kicker">Trayectoria</p>
+    <p class="kicker">Trayectoria principal</p>
     <h2 id="experience-title">Experiencia profesional</h2>
-    <p class="supporting">Timeline de proyectos con foco en frontend enterprise, integración backend y liderazgo técnico.</p>
+    <p class="supporting">Recorrido técnico en proyectos corporativos, evolución de responsabilidad y stack aplicado.</p>
   </header>
 
-  <div class="timeline" role="list" aria-label="Línea temporal de experiencia profesional">
+  <div class="timeline" role="list" aria-label="Línea temporal profesional">
     <article
-      class="experience-card"
+      class="career-item"
       role="listitem"
       *ngFor="let experience of experiences; let i = index; trackBy: trackByExperience"
       [class.is-active]="selectedIndex === i"
@@ -15,20 +15,23 @@
       (keyup.enter)="select(i)"
       tabindex="0"
     >
-      <div class="timeline-dot" aria-hidden="true"></div>
+      <aside class="date-column">
+        <span class="date-label">{{ experience.dateRange }}</span>
+      </aside>
 
-      <div class="card-head">
-        <p class="date-pill">{{ experience.dateRange }}</p>
-        <h3>{{ experience.role }}</h3>
-        <p class="company">{{ experience.company }}</p>
-      </div>
+      <div class="content-column">
+        <header class="item-header">
+          <h3>{{ experience.role }}</h3>
+          <p class="company">{{ experience.company }}</p>
+        </header>
 
-      <ul class="responsibilities">
-        <li *ngFor="let responsibility of experience.responsibilities">{{ responsibility }}</li>
-      </ul>
+        <ul class="responsibilities">
+          <li *ngFor="let responsibility of experience.responsibilities">{{ responsibility }}</li>
+        </ul>
 
-      <div class="stack" aria-label="Tecnologías utilizadas">
-        <span class="stack-chip" *ngFor="let stack of experience.stackHighlights">{{ stack }}</span>
+        <div class="stack" aria-label="Tecnologías destacadas">
+          <span class="stack-chip" *ngFor="let stack of experience.stackHighlights">{{ stack }}</span>
+        </div>
       </div>
     </article>
   </div>

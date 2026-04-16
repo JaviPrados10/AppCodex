@@ -1,39 +1,14 @@
-<section class="hero" aria-label="Presentación profesional">
+<section class="hero" aria-label="Executive profile header">
   <div class="hero-grid">
-    <article class="identity-panel">
-      <p class="eyebrow">Currículum profesional</p>
+    <article class="hero-identity">
+      <p class="eyebrow">Perfil profesional</p>
       <h1>{{ name }}</h1>
       <p class="role">{{ role }}</p>
+      <p class="summary">{{ summary }}</p>
 
-      <div class="identity-metrics" aria-label="Indicadores del perfil">
-        <div class="metric-card">
-          <span>Años en proyectos corporativos</span>
-          <strong>+7</strong>
-        </div>
-        <div class="metric-card">
-          <span>Especialidad</span>
-          <strong>Angular &amp; Frontend Enterprise</strong>
-        </div>
-      </div>
+      <p class="availability">Disponible para proyectos Angular en entornos enterprise</p>
     </article>
 
-    <article class="summary-panel">
-      <header>
-        <p class="summary-kicker">Resumen ejecutivo</p>
-        <h2>Perfil orientado a impacto y entrega</h2>
-      </header>
-
-      <p class="summary-text">{{ summary }}</p>
-
-      <div class="contact-surface" aria-label="Información de contacto">
-        <h3>Contacto</h3>
-        <ul>
-          <li><mat-icon aria-hidden="true">mail</mat-icon><span>{{ contact.email }}</span></li>
-          <li><mat-icon aria-hidden="true">phone_iphone</mat-icon><span>{{ contact.mobilePhone }}</span></li>
-          <li><mat-icon aria-hidden="true">location_on</mat-icon><span>{{ contact.address }}</span></li>
-          <li><mat-icon aria-hidden="true">flag</mat-icon><span>{{ contact.nationality }} · {{ contact.birthDate }}</span></li>
-        </ul>
-      </div>
-    </article>
+    <app-cv-contact-card [contact]="contact" />
   </div>
 </section>

@@ -1,0 +1,10 @@
+<section class="section-card" [class.compact]="compact">
+  <header class="section-header" *ngIf="title || kicker">
+    <p class="kicker" *ngIf="kicker">{{ kicker }}</p>
+    <h2 *ngIf="title">{{ title }}</h2>
+  </header>
+
+  <div class="section-content">
+    <ng-content />
+  </div>
+</section>

@@ -1,12 +1,11 @@
 <section class="skills-wrap" aria-labelledby="skills-title">
   <header class="section-header">
-    <p class="kicker">Capacidades</p>
-    <h2 id="skills-title">Skills técnicas</h2>
-    <p class="intro">Selecciona una competencia para filtrar experiencia o explora el stack por bloques funcionales.</p>
+    <h2 id="skills-title">Competencias técnicas</h2>
+    <p class="intro">Filtra la experiencia por stack o revisa el mapa de habilidades por categoría.</p>
   </header>
 
   <button class="all-button" type="button" [class.is-selected]="selectedSkill === null" (click)="selectSkill(null)">
-    Ver todo el historial
+    Mostrar toda la trayectoria
   </button>
 
   <div class="groups" *ngIf="skillGroups.length; else flatSkills">
