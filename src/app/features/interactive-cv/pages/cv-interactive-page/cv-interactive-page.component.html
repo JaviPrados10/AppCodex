@@ -1,14 +1,40 @@
 <div class="cv-page" aria-label="Currículum interactivo">
-  <app-cv-hero
-    [name]="cvData.name"
-    [role]="cvData.mainRole"
-    [summary]="cvData.professionalSummary"
-    [contact]="cvData.contact"
-  />
+  <div class="background-layer" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+    <span class="grid-shade"></span>
+  </div>
 
-  <section class="cv-layout" aria-label="Contenido principal del currículum">
-    <main class="primary-column">
-      <app-section-card kicker="Historial" title="Experiencia y contribución técnica">
+  <header class="top-header" aria-label="Cabecera del perfil profesional">
+    <div class="branding">
+      <p class="tag">Currículum interactivo</p>
+      <div>
+        <h1>{{ cvData.name }}</h1>
+        <p>{{ cvData.mainRole }}</p>
+      </div>
+    </div>
+
+    <nav class="quick-nav" aria-label="Navegación por secciones">
+      <a href="#hero">Perfil</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#toolkit">Stack</a>
+      <a href="#learning">Formación</a>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <app-cv-hero
+      [name]="cvData.name"
+      [role]="cvData.mainRole"
+      [summary]="cvData.professionalSummary"
+      [contact]="cvData.contact"
+    />
+  </section>
+
+  <section class="cv-composition" aria-label="Contenido principal del currículum">
+    <main class="stage-main" id="experience">
+      <app-section-card kicker="Historial" title="Experiencia y contribución técnica" class="panel panel-experience">
         <app-interactive-experience-list
           [experiences]="filteredExperiences()"
           [selectedIndex]="selectedExperienceIndex()"
@@ -17,8 +43,8 @@
       </app-section-card>
     </main>
 
-    <aside class="sidebar" aria-label="Información profesional complementaria">
-      <app-section-card [compact]="true" title="Stack y herramientas">
+    <aside class="stage-side" aria-label="Información profesional complementaria">
+      <app-section-card [compact]="true" title="Stack y herramientas" id="toolkit" class="panel panel-skills">
         <app-skills-filter
           [skills]="cvData.technicalSkills"
           [skillGroups]="skillGroups"
@@ -27,7 +53,7 @@
         />
       </app-section-card>
 
-      <app-section-card [compact]="true" title="Formación académica">
+      <app-section-card [compact]="true" title="Formación académica" id="learning" class="panel panel-education">
         <ul class="info-list educational-list">
           <li *ngFor="let item of cvData.education">
             <div class="item-row">
@@ -39,13 +65,13 @@
         </ul>
       </app-section-card>
 
-      <app-section-card [compact]="true" title="Idiomas">
+      <app-section-card [compact]="true" title="Idiomas" class="panel panel-languages">
         <ul class="tags-list">
           <li *ngFor="let language of cvData.languages">{{ language }}</li>
         </ul>
       </app-section-card>
 
-      <app-section-card [compact]="true" title="Cursos y otros datos">
+      <app-section-card [compact]="true" title="Cursos y otros datos" class="panel panel-courses">
         <ul class="info-list course-list">
           <li *ngFor="let course of cvData.courses">
             <div class="item-row">

@@ -1,14 +1,23 @@
 <section class="hero" aria-label="Executive profile header">
+  <span class="hero-light"></span>
+
   <div class="hero-grid">
-    <article class="hero-identity">
-      <p class="eyebrow">Perfil profesional</p>
-      <h1>{{ name }}</h1>
+    <article class="hero-primary">
+      <p class="eyebrow">Perfil profesional · CV</p>
+      <h2>{{ name }}</h2>
       <p class="role">{{ role }}</p>
       <p class="summary">{{ summary }}</p>
 
-      <p class="availability">Disponible para proyectos Angular en entornos enterprise</p>
+      <div class="badges" aria-label="Valor profesional">
+        <span>Angular Enterprise</span>
+        <span>Arquitectura Frontend</span>
+        <span>Colaboración técnica</span>
+      </div>
     </article>
 
-    <app-cv-contact-card [contact]="contact" />
+    <aside class="hero-secondary">
+      <app-cv-contact-card [contact]="contact" />
+      <p class="availability">Disponible para proyectos Angular en entornos enterprise</p>
+    </aside>
   </div>
 </section>
