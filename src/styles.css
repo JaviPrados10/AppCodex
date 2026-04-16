@@ -7,4 +7,12 @@ body {
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background: #f5f7fb;
+  color: #1c2f4d;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
 }
