@@ -1,0 +1,10 @@
+<section aria-labelledby="skills-title" class="section-block" id="competencias">
+  <h2 id="skills-title">Competencias técnicas</h2>
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <mat-chip-set>
+        <mat-chip *ngFor="let skill of skills">{{ skill }}</mat-chip>
+      </mat-chip-set>
+    </mat-card-content>
+  </mat-card>
+</section>

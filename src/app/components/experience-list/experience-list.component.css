@@ -1,0 +1,20 @@
+.section-block {
+  margin-bottom: 1.5rem;
+}
+
+.experience-accordion {
+  display: block;
+}
+
+.stack-group {
+  margin-top: 1rem;
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}

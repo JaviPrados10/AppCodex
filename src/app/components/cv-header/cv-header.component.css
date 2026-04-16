@@ -1,0 +1,14 @@
+.cv-hero {
+  margin-bottom: 1.5rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+.contact-grid p {
+  margin: 0;
+}

@@ -1,0 +1,11 @@
+<section aria-labelledby="education-title" class="section-block" id="formacion">
+  <h2 id="education-title">Formación académica</h2>
+
+  <mat-card appearance="outlined" *ngFor="let item of educationItems" class="item-card">
+    <mat-card-title>{{ item.degree }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ item.institution }}</p>
+      <p><strong>{{ item.date }}</strong></p>
+    </mat-card-content>
+  </mat-card>
+</section>
