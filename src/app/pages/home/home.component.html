@@ -1,25 +1,120 @@
-<section class="home-wrapper">
-  <nav class="section-nav" aria-label="Navegación del CV">
-    <a mat-stroked-button href="#experiencia">Experiencia</a>
-    <a mat-stroked-button href="#formacion">Formación</a>
-    <a mat-stroked-button href="#competencias">Competencias</a>
-    <a mat-stroked-button href="#idiomas">Idiomas</a>
-    <a mat-stroked-button href="#otros">Otros datos</a>
-  </nav>
+<div class="cv-shell" aria-label="Currículum profesional">
+  <div class="bg-decor" aria-hidden="true">
+    <span class="shape shape-one"></span>
+    <span class="shape shape-two"></span>
+    <span class="shape shape-three"></span>
+  </div>
 
-  <app-cv-header
-    [name]="cvData.name"
-    [mainRole]="cvData.mainRole"
-    [professionalSummary]="cvData.professionalSummary"
-    [contact]="cvData.contact"
-  ></app-cv-header>
+  <header class="hero" id="inicio">
+    <div class="hero-topbar">
+      <span class="brand-pill">CV Portfolio</span>
+      <a class="hero-link" href="#experiencia">Ver experiencia</a>
+    </div>
 
-  <app-experience-list [experiences]="cvData.experience"></app-experience-list>
-  <app-education-section [educationItems]="cvData.education"></app-education-section>
-  <app-skills-section [skills]="cvData.technicalSkills"></app-skills-section>
-  <app-languages-section [languages]="cvData.languages"></app-languages-section>
-  <app-certifications-section
-    [courses]="cvData.courses"
-    [otherDetails]="cvData.otherDetails"
-  ></app-certifications-section>
-</section>
+    <div class="hero-grid">
+      <div class="hero-main">
+        <p class="hero-kicker">Perfil profesional</p>
+        <h1>{{ cvData.name }}</h1>
+        <h2>{{ cvData.mainRole }}</h2>
+        <p class="hero-summary">{{ cvData.professionalSummary }}</p>
+      </div>
+
+      <aside class="hero-contact" aria-label="Información de contacto">
+        <h3>Contacto</h3>
+        <ul>
+          <li>
+            <span>📍</span>
+            <p>{{ cvData.contact.address }}</p>
+          </li>
+          <li>
+            <span>✉️</span>
+            <p>{{ cvData.contact.email }}</p>
+          </li>
+          <li>
+            <span>📱</span>
+            <p>{{ cvData.contact.mobilePhone }}</p>
+          </li>
+          <li>
+            <span>☎️</span>
+            <p>{{ cvData.contact.landlinePhone }}</p>
+          </li>
+          <li>
+            <span>🌍</span>
+            <p>{{ cvData.contact.nationality }}</p>
+          </li>
+          <li>
+            <span>🎂</span>
+            <p>{{ cvData.contact.birthDate }}</p>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <section class="cv-layout" aria-label="Contenido del currículum">
+    <main class="main-column" id="experiencia" aria-label="Experiencia profesional">
+      <div class="section-title-wrap">
+        <p class="section-kicker">Trayectoria</p>
+        <h3>Experiencia profesional</h3>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item card" *ngFor="let item of cvData.experience">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">{{ item.dateRange }}</p>
+          <h4>{{ item.role }}</h4>
+          <p class="timeline-company">{{ item.company }}</p>
+
+          <ul class="responsibilities">
+            <li *ngFor="let responsibility of item.responsibilities">{{ responsibility }}</li>
+          </ul>
+
+          <ul class="stack-tags">
+            <li *ngFor="let stack of item.stackHighlights">{{ stack }}</li>
+          </ul>
+        </article>
+      </div>
+    </main>
+
+    <aside class="side-column" aria-label="Información complementaria">
+      <section class="card sidebar-card" id="competencias">
+        <h3>Skills técnicas</h3>
+        <ul class="chip-list">
+          <li *ngFor="let skill of cvData.technicalSkills">{{ skill }}</li>
+        </ul>
+      </section>
+
+      <section class="card sidebar-card" id="formacion">
+        <h3>Formación académica</h3>
+        <ul class="compact-list">
+          <li *ngFor="let item of cvData.education">
+            <strong>{{ item.degree }}</strong>
+            <p>{{ item.institution }}</p>
+            <span>{{ item.date }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card sidebar-card" id="idiomas">
+        <h3>Idiomas</h3>
+        <ul class="compact-list simple">
+          <li *ngFor="let language of cvData.languages">{{ language }}</li>
+        </ul>
+      </section>
+
+      <section class="card sidebar-card" id="otros">
+        <h3>Cursos y otros datos</h3>
+        <ul class="compact-list">
+          <li *ngFor="let course of cvData.courses">
+            <strong>{{ course.title }}</strong>
+            <p>{{ course.provider }}</p>
+            <span *ngIf="course.hours">{{ course.hours }}</span>
+          </li>
+        </ul>
+        <ul class="compact-list simple extra-data">
+          <li *ngFor="let detail of cvData.otherDetails">{{ detail }}</li>
+        </ul>
+      </section>
+    </aside>
+  </section>
+</div>
