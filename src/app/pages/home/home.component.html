@@ -7,7 +7,7 @@
 
   <header class="hero" id="inicio" data-reveal>
     <div class="hero-topbar">
-      <span class="brand-pill">CV Portfolio</span>
+      <span class="brand-pill">Portfolio profesional · CV online</span>
 
       <nav class="section-nav" aria-label="Navegación por secciones">
         <a
@@ -30,7 +30,8 @@
         >
           <span aria-hidden="true">{{ isDarkMode ? '☀️' : '🌙' }}</span>
         </button>
-        <button type="button" class="button-primary" (click)="downloadCv()">Descargar CV (PDF)</button>
+        <button type="button" class="button-secondary" (click)="openContactEmail()">Contactar</button>
+        <button type="button" class="button-primary" (click)="downloadCv()">Descargar CV</button>
       </div>
     </div>
 
@@ -50,7 +51,7 @@
       </div>
 
       <aside class="hero-contact" aria-label="Información de contacto">
-        <h3>Contacto</h3>
+        <h3>Contacto directo</h3>
         <ul>
           <li>
             <span>📍</span>
@@ -58,7 +59,7 @@
           </li>
           <li>
             <span>✉️</span>
-            <p>{{ cvData.contact.email }}</p>
+            <p><a [href]="'mailto:' + cvData.contact.email">{{ cvData.contact.email }}</a></p>
           </li>
           <li>
             <span>📱</span>
@@ -73,8 +74,10 @@
             <p>{{ cvData.contact.nationality }}</p>
           </li>
           <li>
-            <span>🎂</span>
-            <p>{{ cvData.contact.birthDate }}</p>
+            <span>💻</span>
+            <p>
+              <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </p>
           </li>
         </ul>
       </aside>
@@ -147,4 +150,27 @@
       </section>
     </aside>
   </section>
+
+  <footer class="site-footer" id="contacto" data-reveal aria-label="Pie de página profesional">
+    <div class="footer-brand">
+      <p class="footer-name">{{ cvData.name }}</p>
+      <p class="footer-role">{{ cvData.mainRole }}</p>
+      <p class="footer-copy">Portfolio profesional preparado para procesos de selección y entrevistas técnicas.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Contacto</h4>
+      <a [href]="'mailto:' + cvData.contact.email">{{ cvData.contact.email }}</a>
+      <a [href]="'tel:' + cvData.contact.mobilePhone.replaceAll(' ', '')">{{ cvData.contact.mobilePhone }}</a>
+      <span>{{ cvData.contact.address }}</span>
+    </div>
+
+    <div class="footer-links">
+      <h4>Enlaces útiles</h4>
+      <a href="#inicio">Inicio</a>
+      <a href="#experiencia">Experiencia</a>
+      <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <button type="button" class="footer-download" (click)="downloadCv()">Descargar CV</button>
+    </div>
+  </footer>
 </div>
