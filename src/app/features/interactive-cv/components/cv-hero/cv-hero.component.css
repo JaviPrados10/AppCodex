@@ -4,7 +4,7 @@
 
 .hero {
   position: relative;
-  border-radius: 26px;
+  border-radius: 24px;
   background: linear-gradient(146deg, #0c1838 0%, #16387f 46%, #2758b8 100%);
   box-shadow: 0 24px 52px rgb(15 23 42 / 26%);
   overflow: hidden;
@@ -44,14 +44,14 @@
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.42fr) minmax(290px, 0.93fr);
-  gap: 30px;
+  gap: 28px;
   align-items: stretch;
-  padding: 38px 36px;
+  padding: 36px 34px;
 }
 
 .hero-primary {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .eyebrow {
@@ -76,7 +76,7 @@ h2 {
 .role {
   margin: 0;
   color: #d7e7ff;
-  font-size: 1.12rem;
+  font-size: 1.08rem;
   font-weight: 630;
   line-height: 1.35;
 }
@@ -84,7 +84,7 @@ h2 {
 .summary {
   margin: 2px 0 0;
   color: rgb(226 236 255 / 90%);
-  line-height: 1.7;
+  line-height: 1.66;
   max-width: 58ch;
   font-size: 0.97rem;
 }
@@ -98,7 +98,7 @@ h2 {
 
 .badges span {
   border-radius: 999px;
-  padding: 7px 12px;
+  padding: 7px 13px;
   border: 1px solid rgb(214 229 255 / 36%);
   color: #eff4ff;
   background: rgb(15 23 42 / 18%);
@@ -124,12 +124,12 @@ h2 {
   margin: 0;
   justify-self: end;
   text-align: right;
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgb(15 23 42 / 28%);
   border: 1px solid rgb(219 234 254 / 30%);
   color: #deebff;
   padding: 11px 14px;
-  font-size: 0.79rem;
+  font-size: 0.8rem;
   font-weight: 700;
   line-height: 1.5;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%);

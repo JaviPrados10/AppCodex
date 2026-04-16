@@ -4,11 +4,17 @@
   <ul>
     <li>
       <mat-icon aria-hidden="true">mail</mat-icon>
-      <div><span class="label">Email</span><strong>{{ contact.email }}</strong></div>
+      <div>
+        <span class="label">Email</span>
+        <strong><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></strong>
+      </div>
     </li>
     <li>
       <mat-icon aria-hidden="true">phone</mat-icon>
-      <div><span class="label">Teléfono</span><strong>{{ contact.mobilePhone }}</strong></div>
+      <div>
+        <span class="label">Teléfono</span>
+        <strong><a [href]="'tel:' + contact.mobilePhone.replaceAll(' ', '')">{{ contact.mobilePhone }}</a></strong>
+      </div>
     </li>
     <li>
       <mat-icon aria-hidden="true">location_on</mat-icon>
@@ -23,4 +29,10 @@
       <div><span class="label">Fecha de nacimiento</span><strong>{{ contact.birthDate }}</strong></div>
     </li>
   </ul>
+
+  <div class="actions" aria-label="Acciones principales">
+    <a class="action-button" [href]="'mailto:' + contact.email">Contacto</a>
+    <a class="action-button" [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <button class="action-button action-button-primary" type="button" (click)="downloadCv()">Descargar CV</button>
+  </div>
 </article>
