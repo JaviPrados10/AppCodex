@@ -1,18 +1,7 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
-import { Component } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  template: `
-    <main class="container">
-      <h1>Hola</h1>
-    </main>
-  `
-})
-class AppComponent {}
+import { AppModule } from './app/app.module';
 
-bootstrapApplication(AppComponent, {
-  providers: [provideRouter([])]
-}).catch((err) => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
