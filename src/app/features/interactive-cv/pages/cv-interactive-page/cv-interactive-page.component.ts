@@ -7,7 +7,7 @@ import { CV_DATA } from '../../../../data/cv.data';
 import { CvProfile } from '../../../../models/cv.model';
 import { CvHeroComponent } from '../../components/cv-hero/cv-hero.component';
 import { InteractiveExperienceListComponent } from '../../components/experience-list/experience-list.component';
-import { SkillsFilterComponent } from '../../components/skills-filter/skills-filter.component';
+import { SkillGroup, SkillsFilterComponent } from '../../components/skills-filter/skills-filter.component';
 
 @Component({
   selector: 'app-cv-interactive-page',
@@ -28,6 +28,12 @@ export class CvInteractivePageComponent {
   readonly cvData: CvProfile = CV_DATA;
   readonly selectedSkill = signal<string | null>(null);
   readonly selectedExperienceIndex = signal<number | null>(0);
+
+  readonly skillGroups: SkillGroup[] = [
+    { title: 'Frontend', skills: ['Angular 4', 'JavaScript', 'jQuery', 'HTML5', 'CSS3', 'SCSS', 'Bootstrap'] },
+    { title: 'Backend & Datos', skills: ['Java', 'Spring Boot', 'MySQL', 'Thymeleaf'] },
+    { title: 'Colaboración y control', skills: ['Git', 'Subversion'] }
+  ];
 
   readonly filteredExperiences = computed(() => {
     const selectedSkill = this.selectedSkill();
