@@ -33,6 +33,6 @@
   <div class="actions" aria-label="Acciones principales">
     <a class="action-button" [href]="'mailto:' + contact.email">Contacto</a>
     <a class="action-button" [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a class="action-button action-button-primary" [href]="cvDownloadUrl" download="Javier-Prados-CV.pdf">Descargar CV</a>
+    <a class="action-button action-button-primary" [href]="cvDownloadUrl" (click)="downloadCv($event)">Descargar CV</a>
   </div>
 </article>
