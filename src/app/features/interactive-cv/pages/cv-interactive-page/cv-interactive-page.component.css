@@ -105,7 +105,8 @@
 }
 
 .premium-topbar {
-  display: block;
+  display: grid;
+  gap: 8px;
   min-height: 58px;
   padding: 8px 12px;
   border-radius: 18px;
@@ -186,6 +187,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
 }
 
@@ -195,8 +197,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
-  width: 100%;
-  margin: 0;
+  width: fit-content;
+  margin: 0 auto;
   padding: 4px;
   border-radius: 14px;
   border: 1px solid rgb(148 163 184 / 22%);
@@ -487,7 +489,7 @@ strong {
   .floating-nav {
     justify-content: flex-start;
     width: 100%;
-    margin-top: 2px;
+    margin: 0;
   }
 }
 
