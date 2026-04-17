@@ -8,13 +8,23 @@
 
   <div class="topbar-shell" [class.is-compact]="isStickyCompact()">
     <header class="premium-topbar" aria-label="Cabecera premium flotante del perfil profesional">
-      <a class="brand-block" href="#hero" aria-label="Volver al perfil principal" (click)="onNavClick($event, 'hero')">
-        <span class="brand-mark">JP</span>
-        <span class="brand-copy">
-          <strong>Javier Prados</strong>
-          <small>Angular Developer</small>
-        </span>
-      </a>
+      <div class="topbar-main-row">
+        <a class="brand-block" href="#hero" aria-label="Volver al perfil principal" (click)="onNavClick($event, 'hero')">
+          <span class="brand-mark">JP</span>
+          <span class="brand-copy">
+            <strong>Javier Prados</strong>
+            <small>Angular Developer</small>
+          </span>
+        </a>
+
+        <div class="topbar-cta" aria-label="Acciones rápidas">
+          <a class="subtle-btn" href="#contact" (click)="onContactClick($event)">Contactar</a>
+          <a class="primary-btn" [href]="cvDownloadUrl" download="Javier-Prados-CV.pdf">Descargar CV</a>
+          <a class="github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            GitHub
+          </a>
+        </div>
+      </div>
 
       <nav class="floating-nav" aria-label="Navegación por secciones">
         <a
@@ -27,17 +37,8 @@
           {{ item.label }}
         </a>
       </nav>
-
-      <div class="topbar-cta" aria-label="Acciones rápidas">
-        <a class="subtle-btn" href="#contact" (click)="onContactClick($event)">Contactar</a>
-        <a class="primary-btn" [href]="cvDownloadUrl" download="Javier-Prados-CV.pdf">Descargar CV</a>
-        <a class="github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          GitHub
-        </a>
-      </div>
     </header>
   </div>
-  <div class="topbar-spacer" aria-hidden="true"></div>
 
   <section id="hero" class="hero-stage">
     <app-cv-hero

@@ -92,7 +92,8 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    const navOffset = 96;
+    const topbar = document.querySelector<HTMLElement>('.topbar-shell');
+    const navOffset = (topbar?.offsetHeight ?? 96) + 16;
     const targetTop = window.scrollY + targetSection.getBoundingClientRect().top - navOffset;
 
     window.scrollTo({
