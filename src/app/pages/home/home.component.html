@@ -5,25 +5,25 @@
     <span class="shape shape-three"></span>
   </div>
 
-  <header class="hero" id="inicio" data-reveal>
-    <div class="floating-navbar" [class.scrolled]="isNavbarScrolled">
-      <div class="nav-left">
-        <a class="logo" href="#inicio" (click)="onNavLinkClick($event, 'inicio')">Javier Prados</a>
-      </div>
-
-      <nav class="nav-center" aria-label="Navegación principal">
-        <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
-        <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
-        <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
-        <a href="#contacto" (click)="onNavLinkClick($event, 'contacto')">Contacto</a>
-      </nav>
-
-      <div class="nav-right">
-        <button type="button" class="btn secondary" (click)="openContactEmail()">Contactar</button>
-        <button type="button" class="btn primary" (click)="downloadCv()">Descargar CV</button>
-      </div>
+  <div class="floating-navbar" [class.scrolled]="isNavbarScrolled">
+    <div class="nav-left">
+      <a class="logo" href="#inicio" (click)="onNavLinkClick($event, 'inicio')">Javier Prados</a>
     </div>
 
+    <nav class="nav-center" aria-label="Navegación principal">
+      <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
+      <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
+      <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
+      <a href="#contacto" (click)="onNavLinkClick($event, 'contacto')">Contacto</a>
+    </nav>
+
+    <div class="nav-right">
+      <button type="button" class="btn secondary" (click)="openContactEmail()">Contactar</button>
+      <button type="button" class="btn primary" (click)="downloadCv()">Descargar CV</button>
+    </div>
+  </div>
+
+  <header class="hero" id="inicio" data-reveal>
     <div class="hero-grid">
       <div class="hero-main">
         <p class="hero-kicker">Perfil profesional</p>
