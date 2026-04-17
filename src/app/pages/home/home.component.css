@@ -106,8 +106,8 @@
   left: 50%;
   transform: translateX(-50%);
   width: min(92%, 1080px);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto minmax(240px, 1fr);
   align-items: center;
   gap: 1rem;
   padding: 0.68rem 1.12rem;
@@ -129,6 +129,10 @@
   box-shadow: 0 14px 30px rgba(24, 33, 65, 0.16);
 }
 
+.nav-left {
+  justify-self: start;
+}
+
 .logo {
   font-weight: 700;
   font-size: 0.98rem;
@@ -141,6 +145,7 @@
   display: flex;
   align-items: center;
   gap: 0.42rem;
+  justify-self: center;
 }
 
 .nav-center a {
@@ -163,6 +168,7 @@
   display: flex;
   align-items: center;
   gap: 0.56rem;
+  justify-self: end;
 }
 
 @media (min-width: 1081px) {
@@ -610,6 +616,7 @@ button:focus-visible {
 
 @media (max-width: 1080px) {
   .floating-navbar {
+    display: flex;
     width: calc(100% - 1.2rem);
     padding: 0.58rem 0.8rem;
     flex-wrap: wrap;
