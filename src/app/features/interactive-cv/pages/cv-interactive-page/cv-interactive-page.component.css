@@ -1,5 +1,5 @@
 :host {
-  --topbar-offset: 0px;
+  --topbar-offset: 10px;
   --surface-radius-lg: 24px;
   --surface-radius: 20px;
   --surface-radius-sm: 16px;
@@ -101,7 +101,7 @@
   z-index: 420;
   width: 100%;
   pointer-events: none;
-  margin-top: 0;
+  margin-top: var(--topbar-offset);
 }
 
 .premium-topbar {
@@ -450,6 +450,23 @@ strong {
 }
 
 @media (max-width: 1140px) {
+  .cv-page {
+    --topbar-height: 92px;
+    --topbar-compact-height: 86px;
+  }
+}
+
+  .brand-block {
+    width: 100%;
+  }
+
+  .topbar-cta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1140px) {
   .cv-composition {
     grid-template-columns: 1fr;
   }
@@ -476,13 +493,13 @@ strong {
 
 @media (max-width: 760px) {
   .cv-page {
-    --topbar-offset: 0px;
+    --topbar-offset: 8px;
     padding: 0 12px 36px;
     gap: 22px;
   }
 
   .topbar-shell {
-    margin-top: 0;
+    margin-top: var(--topbar-offset);
   }
 
   .premium-topbar {
