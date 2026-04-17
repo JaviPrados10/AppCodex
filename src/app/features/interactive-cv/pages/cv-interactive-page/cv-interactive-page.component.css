@@ -1,4 +1,7 @@
 :host {
+  --topbar-offset: 10px;
+  --topbar-height: 78px;
+  --topbar-compact-height: 70px;
   --surface-radius-lg: 24px;
   --surface-radius: 20px;
   --surface-radius-sm: 16px;
@@ -26,7 +29,7 @@
   position: relative;
   max-width: 1260px;
   margin: 0 auto;
-  padding: 28px 24px 84px;
+  padding: 0 24px 84px;
   display: grid;
   gap: 28px;
   isolation: isolate;
@@ -88,12 +91,13 @@
 
 .topbar-shell {
   position: fixed;
-  top: 12px;
+  top: var(--topbar-offset);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 180;
+  z-index: 420;
   width: min(1120px, calc(100% - 28px));
   pointer-events: none;
+  transition: top 260ms ease;
 }
 
 .premium-topbar {
@@ -120,6 +124,15 @@
     transform 260ms ease;
   animation: topbar-enter 460ms ease both;
   pointer-events: auto;
+}
+
+.topbar-spacer {
+  height: calc(var(--topbar-height) + var(--topbar-offset));
+  transition: height 260ms ease;
+}
+
+.topbar-shell.is-compact + .topbar-spacer {
+  height: calc(var(--topbar-compact-height) + var(--topbar-offset));
 }
 
 .topbar-shell.is-compact .premium-topbar {
@@ -418,7 +431,8 @@ strong {
 
 @media (max-width: 1140px) {
   .cv-page {
-    padding-top: 32px;
+    --topbar-height: 92px;
+    --topbar-compact-height: 86px;
   }
 
   .cv-composition {
@@ -461,12 +475,14 @@ strong {
 
 @media (max-width: 760px) {
   .cv-page {
-    padding: 72px 12px 36px;
+    --topbar-offset: 8px;
+    --topbar-height: 132px;
+    --topbar-compact-height: 120px;
+    padding: 0 12px 36px;
     gap: 22px;
   }
 
   .topbar-shell {
-    top: 8px;
     width: calc(100% - 12px);
   }
 
