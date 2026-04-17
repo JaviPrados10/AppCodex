@@ -442,6 +442,22 @@ strong {
 }
 
 @media (max-width: 1140px) {
+  .cv-page {
+    --topbar-height: 92px;
+    --topbar-compact-height: 86px;
+  }
+
+  .brand-block {
+    width: 100%;
+  }
+
+  .topbar-cta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1140px) {
   .cv-composition {
     grid-template-columns: 1fr;
   }
