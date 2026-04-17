@@ -1,43 +1,34 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { CV_DATA } from '../../../../data/cv.data';
 import { CvProfile } from '../../../../models/cv.model';
 import { CvHeroComponent } from '../../components/cv-hero/cv-hero.component';
+import { CvTopbarComponent, TopbarNavItem } from '../../components/cv-topbar/cv-topbar.component';
 import { InteractiveExperienceListComponent } from '../../components/experience-list/experience-list.component';
 import { SkillGroup, SkillsFilterComponent } from '../../components/skills-filter/skills-filter.component';
 import { SectionCardComponent } from '../../components/shared/section-card/section-card.component';
 
-interface NavigationItem {
-  id: string;
-  label: string;
-  optionalOnMobile?: boolean;
-}
-
 @Component({
   selector: 'app-cv-interactive-page',
   standalone: true,
-  imports: [CommonModule, CvHeroComponent, SkillsFilterComponent, InteractiveExperienceListComponent, SectionCardComponent],
+  imports: [CommonModule, CvTopbarComponent, CvHeroComponent, SkillsFilterComponent, InteractiveExperienceListComponent, SectionCardComponent],
   templateUrl: './cv-interactive-page.component.html',
   styleUrl: './cv-interactive-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
+export class CvInteractivePageComponent {
   readonly cvData: CvProfile = CV_DATA;
   readonly selectedSkill = signal<string | null>(null);
   readonly selectedExperienceIndex = signal<number | null>(0);
 
-  readonly isStickyCompact = signal(false);
-  readonly activeSection = signal('experience');
   readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
-  readonly navItems: NavigationItem[] = [
+  readonly navItems: TopbarNavItem[] = [
     { id: 'experience', label: 'Experiencia' },
     { id: 'toolkit', label: 'Skills' },
     { id: 'learning', label: 'Formación', optionalOnMobile: true },
     { id: 'contact', label: 'Contacto' }
   ];
-
-  private intersectionObserver?: IntersectionObserver;
 
   readonly skillGroups: SkillGroup[] = [
     { title: 'Frontend', skills: ['Angular 4', 'JavaScript', 'jQuery', 'HTML5', 'CSS3', 'SCSS', 'Bootstrap'] },
@@ -54,17 +45,6 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
 
     return this.cvData.experience.filter((experience) => experience.stackHighlights.includes(selectedSkill));
   });
-
-  ngAfterViewInit(): void {
-    this.observeSections();
-    this.updateStickyState();
-    window.addEventListener('scroll', this.updateStickyState, { passive: true });
-  }
-
-  ngOnDestroy(): void {
-    this.intersectionObserver?.disconnect();
-    window.removeEventListener('scroll', this.updateStickyState);
-  }
 
   onSkillSelected(skill: string | null): void {
     this.selectedSkill.set(skill);

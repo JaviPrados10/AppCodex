@@ -547,24 +547,4 @@ strong {
 }
 
 @media (max-width: 560px) {
-  .brand-copy small,
-  .floating-nav a[data-optional='true'],
-  .subtle-btn {
-    display: none;
-  }
-
-  .floating-nav a {
-    font-size: 0.74rem;
-    padding: 7px 10px;
-  }
-
-  .topbar-cta {
-    justify-content: stretch;
-  }
-
-  .primary-btn {
-    width: 100%;
-    margin-left: 0;
-    text-align: center;
-  }
 }
