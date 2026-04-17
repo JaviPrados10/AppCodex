@@ -184,7 +184,8 @@
 }
 
 .topbar-main-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
@@ -242,7 +243,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .subtle-btn,
@@ -445,8 +446,8 @@ strong {
 
 @media (max-width: 860px) {
   .topbar-main-row {
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    align-items: stretch;
   }
 
   .brand-block {
@@ -482,7 +483,6 @@ strong {
   }
 
   .premium-topbar {
-    row-gap: 8px;
     padding: 9px 11px;
   }
 
@@ -511,6 +511,7 @@ strong {
   }
 
   .topbar-main-row {
+    grid-template-columns: 1fr;
     align-items: stretch;
   }
 
@@ -522,6 +523,7 @@ strong {
   .floating-nav {
     width: 100%;
     overflow-x: auto;
+    margin-top: 2px;
     padding-bottom: 3px;
     scrollbar-width: thin;
     flex-wrap: nowrap;
