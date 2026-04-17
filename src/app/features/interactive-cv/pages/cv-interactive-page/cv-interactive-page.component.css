@@ -85,6 +85,14 @@
   position: relative;
   display: grid;
   gap: 0;
+  scroll-margin-top: 110px;
+}
+
+#experience,
+#toolkit,
+#learning,
+#contact {
+  scroll-margin-top: 110px;
 }
 
 .topbar-shell {
@@ -446,6 +454,7 @@ strong {
     --topbar-height: 92px;
     --topbar-compact-height: 86px;
   }
+}
 
   .brand-block {
     width: 100%;
