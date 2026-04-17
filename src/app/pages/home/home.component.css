@@ -81,6 +81,7 @@
 }
 
 .hero,
+.floating-navbar,
 .cv-layout,
 .site-footer {
   position: relative;
@@ -95,7 +96,7 @@
   border-radius: 28px;
   padding: clamp(1.2rem, 2.8vw, 2.2rem);
   box-shadow: 0 24px 50px rgba(31, 40, 84, 0.3);
-  margin-top: 5.6rem;
+  margin-top: 0.45rem;
   margin-bottom: 1.55rem;
   transition: background 260ms ease, box-shadow 260ms ease;
 }
@@ -118,6 +119,7 @@
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: 0 8px 24px rgba(30, 36, 51, 0.12);
   z-index: 1000;
+  margin-bottom: 0.8rem;
   transition: top 220ms ease, padding 220ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
@@ -169,6 +171,27 @@
   align-items: center;
   gap: 0.56rem;
   justify-self: end;
+}
+
+@media (min-width: 1081px) {
+  .floating-navbar {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(151, 175, 238, 0.34);
+    border-radius: 999px;
+    padding: 0.2rem;
+  }
+
+  .nav-right {
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 1081px) {
@@ -654,7 +677,7 @@ button:focus-visible {
   }
 
   .floating-navbar {
-    top: 10px;
+    top: 8px;
     border-radius: 15px;
     justify-content: center;
   }
