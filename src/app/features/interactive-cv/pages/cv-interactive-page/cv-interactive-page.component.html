@@ -17,6 +17,18 @@
           </span>
         </a>
 
+        <nav class="floating-nav" aria-label="Navegación por secciones">
+          <a
+            *ngFor="let item of navItems"
+            [attr.href]="'#' + item.id"
+            [class.active]="activeSection() === item.id"
+            [attr.data-optional]="item.optionalOnMobile ? 'true' : null"
+            (click)="onNavClick($event, item.id)"
+          >
+            {{ item.label }}
+          </a>
+        </nav>
+
         <div class="topbar-cta" aria-label="Acciones rápidas">
           <a class="subtle-btn" href="#contact" (click)="onContactClick($event)">Contactar</a>
           <a class="primary-btn" [href]="cvDownloadUrl" download="Javier-Prados-CV.pdf">Descargar CV</a>
@@ -25,18 +37,6 @@
           </a>
         </div>
       </div>
-
-      <nav class="floating-nav" aria-label="Navegación por secciones">
-        <a
-          *ngFor="let item of navItems"
-          [attr.href]="'#' + item.id"
-          [class.active]="activeSection() === item.id"
-          [attr.data-optional]="item.optionalOnMobile ? 'true' : null"
-          (click)="onNavClick($event, item.id)"
-        >
-          {{ item.label }}
-        </a>
-      </nav>
     </header>
   </div>
 
