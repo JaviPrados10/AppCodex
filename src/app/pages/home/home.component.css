@@ -171,6 +171,27 @@
   justify-self: end;
 }
 
+@media (min-width: 1081px) {
+  .floating-navbar {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(151, 175, 238, 0.34);
+    border-radius: 999px;
+    padding: 0.2rem;
+  }
+
+  .nav-right {
+    margin-left: auto;
+  }
+}
+
 .btn {
   padding: 0.5rem 0.86rem;
   border-radius: 10px;
@@ -599,6 +620,14 @@ button:focus-visible {
     width: calc(100% - 1.2rem);
     padding: 0.58rem 0.8rem;
     flex-wrap: wrap;
+  }
+
+  .nav-center {
+    position: static;
+    transform: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
   }
 
   .site-footer {
