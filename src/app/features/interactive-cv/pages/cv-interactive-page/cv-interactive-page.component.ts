@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, computed, signal } from '@angular/core';
 
 import { CV_DATA } from '../../../../data/cv.data';
 import { CvProfile } from '../../../../models/cv.model';
 import { CvHeroComponent } from '../../components/cv-hero/cv-hero.component';
-import { CvTopbarComponent, TopbarNavItem } from '../../components/cv-topbar/cv-topbar.component';
+import { TopbarNavItem } from '../../components/cv-topbar/cv-topbar.component';
 import { InteractiveExperienceListComponent } from '../../components/experience-list/experience-list.component';
 import { SkillGroup, SkillsFilterComponent } from '../../components/skills-filter/skills-filter.component';
 import { SectionCardComponent } from '../../components/shared/section-card/section-card.component';
@@ -12,15 +12,18 @@ import { SectionCardComponent } from '../../components/shared/section-card/secti
 @Component({
   selector: 'app-cv-interactive-page',
   standalone: true,
-  imports: [CommonModule, CvTopbarComponent, CvHeroComponent, SkillsFilterComponent, InteractiveExperienceListComponent, SectionCardComponent],
+  imports: [CommonModule, CvHeroComponent, SkillsFilterComponent, InteractiveExperienceListComponent, SectionCardComponent],
   templateUrl: './cv-interactive-page.component.html',
   styleUrl: './cv-interactive-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CvInteractivePageComponent {
+export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
   readonly cvData: CvProfile = CV_DATA;
   readonly selectedSkill = signal<string | null>(null);
   readonly selectedExperienceIndex = signal<number | null>(0);
+  readonly isStickyCompact = signal(false);
+  readonly activeSection = signal('hero');
+  intersectionObserver: IntersectionObserver | null = null;
 
   readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
   readonly navItems: TopbarNavItem[] = [
@@ -63,6 +66,18 @@ export class CvInteractivePageComponent {
   onContactClick(event: Event): void {
     event.preventDefault();
     this.scrollToSection('contact');
+  }
+
+  ngAfterViewInit(): void {
+    this.updateStickyState();
+    this.observeSections();
+    window.addEventListener('scroll', this.updateStickyState, { passive: true });
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.updateStickyState);
+    this.intersectionObserver?.disconnect();
+    this.intersectionObserver = null;
   }
 
   private scrollToSection(sectionId: string): void {
