@@ -763,6 +763,11 @@
   transform: translateY(0);
 }
 
+.cv-shell.print-mode [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: none;
@@ -853,6 +858,11 @@ button:focus-visible {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
   .bg-decor,
   .floating-navbar,
   .site-footer,
@@ -875,6 +885,29 @@ button:focus-visible {
     background: #ffffff;
     color: #111111;
     padding: 0;
+    max-width: none;
+  }
+
+  .hero-grid,
+  .cv-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero,
+  .section-title-wrap,
+  .timeline-item,
+  .sidebar-card,
+  .compact-list li,
+  .main-column,
+  .side-column {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .hero-grid,
@@ -894,5 +927,10 @@ button:focus-visible {
     box-shadow: none;
     border: 1px solid #dbe3f7;
     break-inside: avoid;
+  }
+
+  .card:hover,
+  .timeline-item:hover {
+    transform: none;
   }
 }

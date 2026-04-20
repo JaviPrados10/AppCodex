@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { CV_DATA } from '../../data/cv.data';
@@ -33,11 +33,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   activeSection = 'inicio';
   isDarkMode = false;
   isNavbarScrolled = false;
+  isPrintMode = false;
 
   private sectionObserver?: IntersectionObserver;
   private revealObserver?: IntersectionObserver;
+  private isPrinting = false;
 
   constructor(
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly ngZone: NgZone,
     private readonly title: Title,
     private readonly meta: Meta
   ) {}
@@ -65,8 +69,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.applyTheme();
   }
 
-  downloadCv(): void {
+  async downloadCv(): Promise<void> {
+    if (this.isPrinting) {
+      return;
+    }
+
+    this.isPrinting = true;
+    this.isPrintMode = true;
+    this.changeDetectorRef.detectChanges();
+
+    await this.waitForFullRender();
     window.print();
+    setTimeout(() => this.onAfterPrint(), 1500);
   }
 
   openContactEmail(): void {
@@ -100,6 +114,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isNavbarScrolled = window.scrollY > 18;
+  }
+
+  @HostListener('window:afterprint')
+  onAfterPrint(): void {
+    this.isPrintMode = false;
+    this.isPrinting = false;
+    this.changeDetectorRef.detectChanges();
   }
 
   private applyTheme(): void {
@@ -161,5 +182,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
     revealElements.forEach((item) => this.revealObserver?.observe(item));
+  }
+
+  private waitForFullRender(): Promise<void> {
+    return new Promise((resolve) => {
+      this.ngZone.runOutsideAngular(() => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => resolve());
+        });
+      });
+    });
   }
 }
