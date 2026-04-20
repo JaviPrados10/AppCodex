@@ -6,7 +6,6 @@ import { CvProfile } from '../../models/cv.model';
 
 interface NavItem {
   id: string;
-  label: string;
 }
 
 @Component({
@@ -20,13 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly themeStorageKey = 'cv-theme';
   readonly githubUrl = 'https://github.com/';
   readonly navItems: NavItem[] = [
-    { id: 'inicio', label: 'Inicio' },
-    { id: 'experiencia', label: 'Experiencia' },
-    { id: 'competencias', label: 'Skills' },
-    { id: 'formacion', label: 'Formación' },
-    { id: 'idiomas', label: 'Idiomas' },
-    { id: 'otros', label: 'Cursos' },
-    { id: 'contacto', label: 'Contacto' }
+    { id: 'inicio' },
+    { id: 'experiencia' },
+    { id: 'skills' },
+    { id: 'formacion' },
+    { id: 'idiomas' },
+    { id: 'otros' },
+    { id: 'contacto' }
   ];
   readonly highlightedStack: string[] = ['Angular', 'TypeScript', 'Spring Boot', 'Microfrontends', 'Karma/Jasmine', 'Git'];
 
@@ -88,11 +87,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const body = encodeURIComponent('Hola Javier,%0D%0A%0D%0ATe contacto tras revisar tu portfolio online.');
     window.location.href = `mailto:${this.cvData.contact.email}?subject=${subject}&body=${body}`;
   }
-
-  isActiveSection(sectionId: string): boolean {
-    return this.activeSection === sectionId;
-  }
-
 
   onNavLinkClick(event: Event, sectionId: string): void {
     event.preventDefault();
