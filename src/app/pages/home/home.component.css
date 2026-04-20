@@ -855,8 +855,20 @@ button:focus-visible {
 @media print {
   .bg-decor,
   .floating-navbar,
-  .site-footer {
+  .site-footer,
+  .btn,
+  .footer-download {
     display: none;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff;
   }
 
   .cv-shell {
@@ -865,14 +877,22 @@ button:focus-visible {
     padding: 0;
   }
 
+  .hero-grid,
+  .cv-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .hero {
     box-shadow: none;
     border: 1px solid #dbe3f7;
+    margin-top: 0;
     break-inside: avoid;
   }
 
   .card {
     box-shadow: none;
+    border: 1px solid #dbe3f7;
     break-inside: avoid;
   }
 }
