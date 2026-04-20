@@ -1,4 +1,4 @@
-<div class="cv-page" aria-label="Currículum interactivo">
+<div class="cv-page" [class.print-mode]="isPrintMode()" aria-label="Currículum interactivo">
   <div class="background-layer" aria-hidden="true">
     <span class="blob blob-a"></span>
     <span class="blob blob-b"></span>
@@ -31,7 +31,7 @@
 
         <div class="topbar-cta" aria-label="Acciones rápidas">
           <a class="subtle-btn" href="#contact" (click)="onContactClick($event)">Contactar</a>
-          <a class="primary-btn" [href]="cvDownloadUrl" download="Javier-Prados-CV.pdf">Descargar CV</a>
+          <button class="primary-btn" type="button" (click)="onDownloadCv($event)">Descargar CV</button>
           <a class="github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             GitHub
           </a>
@@ -47,6 +47,8 @@
       [summary]="cvData.professionalSummary"
       [contact]="cvData.contact"
       [profile]="cvData"
+      [isPrintMode]="isPrintMode()"
+      (printRequested)="onDownloadCv($event)"
     />
   </section>
 

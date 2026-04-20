@@ -1,5 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, computed, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  NgZone,
+  OnDestroy,
+  computed,
+  signal
+} from '@angular/core';
 
 import { CV_DATA } from '../../../../data/cv.data';
 import { CvProfile } from '../../../../models/cv.model';
@@ -23,9 +33,10 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
   readonly selectedExperienceIndex = signal<number | null>(0);
   readonly isStickyCompact = signal(false);
   readonly activeSection = signal('hero');
+  readonly isPrintMode = signal(false);
   intersectionObserver: IntersectionObserver | null = null;
+  private isPrinting = false;
 
-  readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
   readonly navItems: TopbarNavItem[] = [
     { id: 'experience', label: 'Experiencia' },
     { id: 'toolkit', label: 'Skills' },
@@ -40,6 +51,10 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
   ];
 
   readonly filteredExperiences = computed(() => {
+    if (this.isPrintMode()) {
+      return this.cvData.experience;
+    }
+
     const selectedSkill = this.selectedSkill();
 
     if (!selectedSkill) {
@@ -48,6 +63,11 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
 
     return this.cvData.experience.filter((experience) => experience.stackHighlights.includes(selectedSkill));
   });
+
+  constructor(
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly ngZone: NgZone
+  ) {}
 
   onSkillSelected(skill: string | null): void {
     this.selectedSkill.set(skill);
@@ -68,6 +88,24 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
     this.scrollToSection('contact');
   }
 
+  async onDownloadCv(event: Event): Promise<void> {
+    event.preventDefault();
+
+    if (this.isPrinting) {
+      return;
+    }
+
+    this.isPrinting = true;
+    this.selectedSkill.set(null);
+    this.selectedExperienceIndex.set(0);
+    this.isPrintMode.set(true);
+    this.changeDetectorRef.detectChanges();
+
+    await this.waitForPrintRender();
+    window.print();
+    setTimeout(() => this.onAfterPrint(), 1200);
+  }
+
   ngAfterViewInit(): void {
     this.updateStickyState();
     this.observeSections();
@@ -78,6 +116,17 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
     window.removeEventListener('scroll', this.updateStickyState);
     this.intersectionObserver?.disconnect();
     this.intersectionObserver = null;
+  }
+
+  @HostListener('window:afterprint')
+  onAfterPrint(): void {
+    if (!this.isPrinting && !this.isPrintMode()) {
+      return;
+    }
+
+    this.isPrintMode.set(false);
+    this.isPrinting = false;
+    this.changeDetectorRef.detectChanges();
   }
 
   private scrollToSection(sectionId: string): void {
@@ -104,6 +153,10 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
   };
 
   private observeSections(): void {
+    if (this.isPrintMode()) {
+      return;
+    }
+
     const sectionIds = this.navItems.map((item) => item.id);
 
     this.intersectionObserver = new IntersectionObserver(
@@ -128,6 +181,18 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
       if (element) {
         this.intersectionObserver?.observe(element);
       }
+    });
+  }
+
+  private waitForPrintRender(): Promise<void> {
+    return new Promise((resolve) => {
+      this.ngZone.runOutsideAngular(() => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setTimeout(() => resolve(), 160);
+          });
+        });
+      });
     });
   }
 }

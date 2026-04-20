@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ContactInfo, CvProfile } from '../../../../models/cv.model';
 import { CvContactCardComponent } from '../cv-contact-card/cv-contact-card.component';
@@ -17,4 +17,10 @@ export class CvHeroComponent {
   @Input({ required: true }) summary = '';
   @Input({ required: true }) contact!: ContactInfo;
   @Input({ required: true }) profile!: CvProfile;
+  @Input() isPrintMode = false;
+  @Output() printRequested = new EventEmitter<Event>();
+
+  onPrintRequested(event: Event): void {
+    this.printRequested.emit(event);
+  }
 }
