@@ -100,58 +100,57 @@
   top: var(--topbar-offset);
   z-index: 420;
   width: 100%;
-  margin-top: 36px;
+  margin-top: 26px;
   display: flex;
   justify-content: center;
 }
 
 .premium-topbar {
   min-height: 0;
-  width: fit-content;
-  max-width: min(100%, 760px);
-  padding: 14px 18px;
-  border-radius: 24px;
-  border: 1px solid rgb(255 255 255 / 76%);
-  background: rgb(255 255 255 / 84%);
+  width: min(100%, 1240px);
+  padding: 26px 34px;
+  border-radius: 38px;
+  border: 1px solid rgb(255 255 255 / 78%);
+  background: rgb(255 255 255 / 74%);
   backdrop-filter: blur(16px) saturate(130%);
   box-shadow:
-    0 12px 24px rgb(15 23 42 / 10%),
+    0 18px 34px rgb(15 23 42 / 10%),
     inset 0 1px 0 rgb(255 255 255 / 88%);
   transition: padding 220ms ease, border-radius 220ms ease, background 220ms ease;
   animation: topbar-enter 460ms ease both;
 }
 
 .topbar-shell.is-compact .premium-topbar {
-  padding: 12px 16px;
-  border-radius: 22px;
-  background: rgb(255 255 255 / 90%);
+  padding: 20px 28px;
+  border-radius: 32px;
+  background: rgb(255 255 255 / 80%);
 }
 
 .topbar-main-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 .floating-nav {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
-  padding: 6px;
+  gap: 8px;
+  padding: 6px 14px;
   border-radius: var(--surface-radius-pill);
-  border: 1px solid #d7e0f2;
-  background: rgb(255 255 255 / 95%);
+  border: 2px solid #d6def2;
+  background: rgb(255 255 255 / 92%);
 }
 
 .floating-nav a {
   text-decoration: none;
-  color: #45506b;
-  font-size: clamp(0.9rem, 1.05vw, 0.98rem);
-  font-weight: 600;
+  color: #495572;
+  font-size: clamp(1.02rem, 1.38vw, 1.08rem);
+  font-weight: 500;
   letter-spacing: 0.01em;
-  padding: 8px 12px;
+  padding: 10px 18px;
   border-radius: 999px;
   transition: color var(--transition-smooth), background-color var(--transition-smooth);
 }
@@ -169,16 +168,16 @@
 
 .primary-btn {
   cursor: pointer;
-  border-radius: 14px;
+  border-radius: 21px;
   border: 0;
-  padding: 10px 18px;
+  padding: 13px 38px;
   font: inherit;
-  font-size: clamp(0.86rem, 0.95vw, 0.94rem);
+  font-size: clamp(1rem, 1.32vw, 1.08rem);
   font-weight: 700;
   color: #eef4ff;
   white-space: nowrap;
-  background: linear-gradient(90deg, #3f64da 0%, #4669d9 50%, #3c61d6 100%);
-  box-shadow: 0 8px 18px rgb(49 93 211 / 26%);
+  background: linear-gradient(90deg, #4065dd 0%, #4a6fe0 100%);
+  box-shadow: 0 10px 20px rgb(49 93 211 / 24%);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), filter var(--transition-smooth);
 }
 
@@ -327,6 +326,7 @@ strong {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    gap: 12px;
   }
 
   .topbar-cta {
@@ -351,13 +351,15 @@ strong {
   }
 
   .premium-topbar {
-    width: min(100%, 700px);
-    padding: 12px 14px;
+    width: min(100%, 880px);
+    padding: 18px;
+    border-radius: 28px;
   }
 
   .floating-nav {
-    width: auto;
+    width: min(100%, 760px);
     margin: 0;
+    justify-content: center;
   }
 }
 
@@ -373,10 +375,10 @@ strong {
   }
 
   .premium-topbar {
-    border-radius: 22px;
+    border-radius: 24px;
     width: 100%;
     max-width: 100%;
-    padding: 10px;
+    padding: 12px;
     min-height: 0;
   }
 
@@ -391,14 +393,14 @@ strong {
 
   .topbar-shell.is-compact .premium-topbar {
     border-radius: 18px;
-    padding: 12px;
+    padding: 10px;
   }
 
   .floating-nav {
     width: 100%;
     overflow-x: auto;
     margin-top: 0;
-    padding: 8px;
+    padding: 6px;
     scrollbar-width: thin;
     flex-wrap: nowrap;
     justify-content: flex-start;
