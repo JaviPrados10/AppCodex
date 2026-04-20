@@ -30,9 +30,9 @@
     </li>
   </ul>
 
-  <div class="actions" aria-label="Acciones principales">
+  <div class="actions" aria-label="Acciones principales" *ngIf="!isPrintMode">
     <a class="action-button" [href]="'mailto:' + contact.email">Contacto</a>
     <a class="action-button" [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a class="action-button action-button-primary" [href]="cvDownloadUrl" (click)="downloadCv($event)">Descargar CV</a>
+    <button class="action-button action-button-primary" type="button" (click)="requestPrint($event)">Descargar CV</button>
   </div>
 </article>
