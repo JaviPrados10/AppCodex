@@ -181,12 +181,12 @@ h2 {
   .hero::before,
   .hero::after,
   .hero-light,
-  .hero-grid {
+  .screen-hero {
     display: none;
   }
 
   .print-cover {
-    display: grid;
+    display: grid !important;
     gap: 14px;
     padding: 14mm 12mm 10mm;
     min-height: 252mm;

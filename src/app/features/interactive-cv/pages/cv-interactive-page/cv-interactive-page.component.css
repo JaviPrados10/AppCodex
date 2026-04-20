@@ -609,6 +609,14 @@ strong {
     page-break-after: always;
   }
 
+  :host ::ng-deep app-cv-hero .screen-hero {
+    display: none !important;
+  }
+
+  :host ::ng-deep app-cv-hero .print-cover {
+    display: grid !important;
+  }
+
   .cv-composition {
     grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
     gap: 12px;
