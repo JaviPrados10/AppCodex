@@ -604,6 +604,11 @@ strong {
     scroll-margin-top: 0;
   }
 
+  .hero-stage {
+    break-after: page;
+    page-break-after: always;
+  }
+
   .cv-composition {
     grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
     gap: 12px;
