@@ -16,7 +16,12 @@
     </article>
 
     <aside class="hero-secondary" id="contact">
-      <app-cv-contact-card [contact]="contact" [profile]="profile" />
+      <app-cv-contact-card
+        [contact]="contact"
+        [profile]="profile"
+        [isPrintMode]="isPrintMode"
+        (printRequested)="onPrintRequested($event)"
+      />
       <p class="availability">Disponible para proyectos Angular en entornos enterprise</p>
     </aside>
   </div>

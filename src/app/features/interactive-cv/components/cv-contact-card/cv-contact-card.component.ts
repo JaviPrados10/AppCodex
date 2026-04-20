@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ContactInfo, CvProfile } from '../../../../models/cv.model';
@@ -6,7 +7,7 @@ import { ContactInfo, CvProfile } from '../../../../models/cv.model';
 @Component({
   selector: 'app-cv-contact-card',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './cv-contact-card.component.html',
   styleUrl: './cv-contact-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -14,16 +15,12 @@ import { ContactInfo, CvProfile } from '../../../../models/cv.model';
 export class CvContactCardComponent {
   @Input({ required: true }) contact!: ContactInfo;
   @Input({ required: true }) profile!: CvProfile;
+  @Input() isPrintMode = false;
+  @Output() printRequested = new EventEmitter<Event>();
 
   readonly githubUrl = 'https://github.com/';
-  readonly cvDownloadUrl = '/assets/cv/javier-prados-cv.pdf';
 
-  downloadCv(event: Event): void {
-    event.preventDefault();
-
-    const link = document.createElement('a');
-    link.href = this.cvDownloadUrl;
-    link.download = `CV-${this.profile.name.replace(/\s+/g, '-')}.pdf`;
-    link.click();
+  requestPrint(event: Event): void {
+    this.printRequested.emit(event);
   }
 }

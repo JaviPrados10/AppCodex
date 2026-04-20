@@ -161,3 +161,83 @@ h2 {
     line-height: 1.62;
   }
 }
+
+@media print {
+  .hero {
+    border-radius: 0;
+    border: 1px solid #d3deec;
+    background: #ffffff;
+    box-shadow: none;
+    overflow: visible;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .hero::before,
+  .hero::after,
+  .hero-light {
+    display: none;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr);
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .hero-primary {
+    gap: 8px;
+  }
+
+  .eyebrow {
+    font-size: 7pt;
+    color: #334155;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    font-size: 24pt;
+    color: #0f172a;
+    line-height: 0.98;
+  }
+
+  .role {
+    font-size: 11pt;
+    color: #1e3a8a;
+  }
+
+  .summary {
+    font-size: 8.7pt;
+    line-height: 1.45;
+    color: #334155;
+    max-width: none;
+  }
+
+  .badges {
+    gap: 4px;
+    margin-top: 0;
+  }
+
+  .badges span {
+    padding: 3px 7px;
+    font-size: 6.8pt;
+    color: #1e3a8a;
+    border: 1px solid #c2d1e7;
+    background: #f3f6fb;
+  }
+
+  .hero-secondary {
+    gap: 8px;
+  }
+
+  .availability {
+    justify-self: stretch;
+    text-align: left;
+    font-size: 7.2pt;
+    padding: 7px 8px;
+    color: #334155;
+    border: 1px solid #d3deec;
+    background: #f8fafc;
+    box-shadow: none;
+  }
+}
