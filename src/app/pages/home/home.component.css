@@ -910,6 +910,12 @@ button:focus-visible {
     page-break-inside: avoid;
   }
 
+  .hero-grid,
+  .cv-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .hero {
     box-shadow: none;
     border: 1px solid #dbe3f7;
