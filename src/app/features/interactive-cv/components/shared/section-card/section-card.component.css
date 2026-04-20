@@ -72,3 +72,42 @@ h2 {
     padding: 16px;
   }
 }
+
+@media print {
+  .section-card,
+  .section-card.compact {
+    background: #ffffff;
+    border: 1px solid #d3deec;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 12px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .section-card::after {
+    display: none;
+  }
+
+  .section-card::before {
+    width: 2px;
+    background: #3b82f6;
+  }
+
+  .section-header {
+    gap: 4px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom-color: #dbe4f0;
+  }
+
+  .kicker {
+    font-size: 7pt;
+    color: #1e3a8a;
+  }
+
+  h2 {
+    font-size: 11pt;
+    color: #0f172a;
+  }
+}

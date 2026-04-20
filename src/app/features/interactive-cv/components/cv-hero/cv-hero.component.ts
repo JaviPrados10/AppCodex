@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ContactInfo, CvProfile } from '../../../../models/cv.model';
 import { CvContactCardComponent } from '../cv-contact-card/cv-contact-card.component';
@@ -6,7 +7,7 @@ import { CvContactCardComponent } from '../cv-contact-card/cv-contact-card.compo
 @Component({
   selector: 'app-cv-hero',
   standalone: true,
-  imports: [CvContactCardComponent],
+  imports: [CommonModule, CvContactCardComponent],
   templateUrl: './cv-hero.component.html',
   styleUrl: './cv-hero.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -17,4 +18,14 @@ export class CvHeroComponent {
   @Input({ required: true }) summary = '';
   @Input({ required: true }) contact!: ContactInfo;
   @Input({ required: true }) profile!: CvProfile;
+  @Input() isPrintMode = false;
+  @Output() printRequested = new EventEmitter<Event>();
+
+  onPrintRequested(event: Event): void {
+    this.printRequested.emit(event);
+  }
+
+  get printStackHighlights(): string[] {
+    return this.profile?.technicalSkills?.slice(0, 10) ?? [];
+  }
 }

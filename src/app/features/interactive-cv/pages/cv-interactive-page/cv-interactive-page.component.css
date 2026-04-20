@@ -266,6 +266,10 @@
     transform var(--transition-smooth);
 }
 
+.primary-btn {
+  cursor: pointer;
+}
+
 .subtle-btn {
   color: #254678;
   background: rgb(255 255 255 / 56%);
@@ -559,4 +563,117 @@ strong {
 }
 
 @media (max-width: 560px) {
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm;
+  }
+
+  :host {
+    background: #ffffff;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    text-shadow: none !important;
+  }
+
+  .cv-page {
+    max-width: none;
+    gap: 14px;
+    padding: 0;
+    color: #0f172a;
+  }
+
+  .background-layer,
+  .topbar-shell,
+  .subtle-btn,
+  .primary-btn,
+  .github-link {
+    display: none !important;
+  }
+
+  .hero-stage,
+  #experience,
+  #toolkit,
+  #learning,
+  #contact {
+    scroll-margin-top: 0;
+  }
+
+  .hero-stage {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .cv-composition {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  .stage-side {
+    position: static;
+    top: auto;
+    gap: 12px;
+  }
+
+  .stage-main {
+    gap: 12px;
+  }
+
+  .panel,
+  .panel-experience,
+  .panel-skills,
+  .panel-education,
+  .panel-languages,
+  .panel-courses,
+  .info-list li,
+  .educational-list li,
+  .course-list li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .item-row {
+    align-items: flex-start;
+  }
+
+  strong {
+    font-size: 8.8pt;
+    line-height: 1.45;
+  }
+
+  .meta {
+    font-size: 7.2pt;
+  }
+
+  .detail {
+    font-size: 8pt;
+    line-height: 1.45;
+  }
+
+  .info-list,
+  .tags-list {
+    gap: 7px;
+  }
+
+  .info-list li {
+    background: #ffffff;
+    border: 1px solid #d5dfec;
+    border-radius: 10px;
+    padding: 9px 10px;
+    box-shadow: none;
+  }
+
+  .tags-list li {
+    border-color: #c4d3e9;
+    background: #f4f7fb;
+    color: #22365d;
+    font-size: 7.1pt;
+    padding: 4px 8px;
+  }
 }

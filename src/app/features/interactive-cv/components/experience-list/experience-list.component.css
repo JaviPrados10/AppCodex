@@ -202,3 +202,123 @@ h2 {
     justify-self: start;
   }
 }
+
+@media print {
+  .experience-wrap {
+    gap: 10px;
+  }
+
+  .section-header {
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .kicker {
+    font-size: 7pt;
+    color: #274690;
+  }
+
+  h2 {
+    font-size: 15pt;
+    color: #0f172a;
+  }
+
+  .supporting {
+    font-size: 8.5pt;
+    line-height: 1.45;
+    color: #334155;
+  }
+
+  .timeline {
+    gap: 8px;
+    padding: 0;
+  }
+
+  .timeline::before {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: none;
+    width: 1px;
+    background: #c8d5ea;
+    box-shadow: none;
+  }
+
+  .career-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 10px 12px 10px 16px;
+    margin-left: 10px;
+    border: 1px solid #d6e0ed;
+    border-radius: 10px;
+    box-shadow: none;
+    background: #ffffff;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    cursor: default;
+  }
+
+  .career-item::before {
+    left: -16px;
+    top: 15px;
+    width: 9px;
+    height: 9px;
+    border: 2px solid #345faa;
+    box-shadow: 0 0 0 2px #fff;
+  }
+
+  .career-item::after {
+    display: none;
+  }
+
+  .career-item:nth-child(even) .date-column,
+  .career-item:nth-child(even) .content-column {
+    order: initial;
+    justify-self: start;
+  }
+
+  .date-column {
+    padding-top: 0;
+  }
+
+  .date-label {
+    font-size: 7pt;
+    font-weight: 700;
+    color: #0f172a;
+    border-color: #c8d5ea;
+    background: #eef2f8;
+    padding: 3px 7px;
+  }
+
+  .item-header h3 {
+    font-size: 10pt;
+    line-height: 1.35;
+    color: #0f172a;
+  }
+
+  .company {
+    font-size: 8pt;
+    margin: 1px 0 0;
+    color: #2a4d8c;
+  }
+
+  .responsibilities {
+    font-size: 8pt;
+    line-height: 1.45;
+    gap: 3px;
+    padding-left: 14px;
+    max-width: none;
+  }
+
+  .stack {
+    gap: 4px;
+  }
+
+  .stack-chip {
+    font-size: 6.8pt;
+    padding: 3px 6px;
+    border: 1px solid #ced9e8;
+    background: #f6f8fb;
+    color: #334155;
+  }
+}

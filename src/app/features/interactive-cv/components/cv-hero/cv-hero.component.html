@@ -16,8 +16,56 @@
     </article>
 
     <aside class="hero-secondary" id="contact">
-      <app-cv-contact-card [contact]="contact" [profile]="profile" />
+      <app-cv-contact-card
+        [contact]="contact"
+        [profile]="profile"
+        [isPrintMode]="isPrintMode"
+        (printRequested)="onPrintRequested($event)"
+      />
       <p class="availability">Disponible para proyectos Angular en entornos enterprise</p>
     </aside>
+  </div>
+
+  <div class="print-cover" aria-label="CV cover page for print">
+    <header class="print-header">
+      <p class="print-kicker">Currículum profesional</p>
+      <h1>{{ name }}</h1>
+      <p class="print-role">{{ role }}</p>
+    </header>
+
+    <div class="print-cover-grid">
+      <article class="print-main-column">
+        <h2>Perfil profesional</h2>
+        <p>{{ summary }}</p>
+
+        <section class="print-positioning" aria-label="Posicionamiento profesional">
+          <h3>Enfoque</h3>
+          <ul>
+            <li>Angular Enterprise</li>
+            <li>Arquitectura Frontend</li>
+            <li>Colaboración técnica</li>
+          </ul>
+        </section>
+      </article>
+
+      <aside class="print-side-column">
+        <section class="print-contact" aria-label="Contacto directo">
+          <h3>Contacto directo</h3>
+          <ul>
+            <li><span>Email</span><strong>{{ contact.email }}</strong></li>
+            <li><span>Teléfono</span><strong>{{ contact.mobilePhone }}</strong></li>
+            <li><span>Ubicación</span><strong>{{ contact.address }}</strong></li>
+            <li><span>Nacionalidad</span><strong>{{ contact.nationality }}</strong></li>
+          </ul>
+        </section>
+
+        <section class="print-stack" aria-label="Stack clave">
+          <h3>Stack clave</h3>
+          <ul>
+            <li *ngFor="let stack of printStackHighlights">{{ stack }}</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
   </div>
 </section>

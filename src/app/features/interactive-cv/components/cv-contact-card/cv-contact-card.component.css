@@ -122,3 +122,52 @@ strong a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+@media print {
+  .contact-card {
+    padding: 9px 10px;
+    border: 1px solid #d3deec;
+    border-radius: 10px;
+    background: #f9fbff;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  h2 {
+    font-size: 7pt;
+    color: #1e3a8a;
+    letter-spacing: 0.08em;
+  }
+
+  ul {
+    gap: 5px;
+  }
+
+  li {
+    gap: 7px;
+    padding: 5px 0;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 0;
+  }
+
+  li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .label {
+    font-size: 6.4pt;
+    margin-bottom: 0;
+  }
+
+  strong {
+    font-size: 7.5pt;
+    line-height: 1.3;
+    color: #0f172a;
+  }
+
+  mat-icon {
+    color: #334155;
+    margin-top: 0;
+  }
+}
