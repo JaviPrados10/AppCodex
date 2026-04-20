@@ -34,7 +34,7 @@
   position: relative;
   overflow: hidden;
   min-height: 100dvh;
-  padding: 1.75rem clamp(0.9rem, 3vw, 2.5rem) 2.5rem;
+  padding: 2.6rem clamp(0.9rem, 3vw, 2.5rem) 2.5rem;
   background: var(--bg-main);
   color: var(--text-main);
   transition: background 260ms ease, color 260ms ease;
@@ -81,6 +81,7 @@
 }
 
 .hero,
+.floating-navbar,
 .cv-layout,
 .site-footer {
   position: relative;
@@ -95,17 +96,16 @@
   border-radius: 28px;
   padding: clamp(1.2rem, 2.8vw, 2.2rem);
   box-shadow: 0 24px 50px rgba(31, 40, 84, 0.3);
-  margin-top: 5.6rem;
+  /* TEMP: requested larger top separation from the page edge */
+  margin-top: 4.5rem !important;
   margin-bottom: 1.55rem;
   transition: background 260ms ease, box-shadow 260ms ease;
 }
 
 .floating-navbar {
-  position: fixed;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(92%, 1080px);
+  position: sticky;
+  top: 12px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,6 +118,7 @@
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: 0 8px 24px rgba(30, 36, 51, 0.12);
   z-index: 1000;
+  margin-bottom: 1.5rem;
   transition: top 220ms ease, padding 220ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
@@ -163,6 +164,30 @@
   display: flex;
   align-items: center;
   gap: 0.56rem;
+}
+
+@media (min-width: 1081px) {
+  .floating-navbar {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) auto minmax(250px, 1fr);
+    column-gap: 1rem;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .nav-center {
+    position: static;
+    transform: none;
+    justify-self: center;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(151, 175, 238, 0.34);
+    border-radius: 999px;
+    padding: 0.2rem;
+  }
+
+  .nav-right {
+    justify-self: end;
+  }
 }
 
 .btn {
@@ -588,10 +613,22 @@ button:focus-visible {
 }
 
 @media (max-width: 1080px) {
+  .hero {
+    margin-top: 3rem !important;
+  }
+
   .floating-navbar {
     width: calc(100% - 1.2rem);
     padding: 0.58rem 0.8rem;
     flex-wrap: wrap;
+  }
+
+  .nav-center {
+    position: static;
+    transform: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
   }
 
   .site-footer {
@@ -615,10 +652,11 @@ button:focus-visible {
   .hero {
     border-radius: 20px;
     padding: 1rem;
+    margin-top: 1.75rem !important;
   }
 
   .floating-navbar {
-    top: 10px;
+    top: 8px;
     border-radius: 15px;
     justify-content: center;
   }
