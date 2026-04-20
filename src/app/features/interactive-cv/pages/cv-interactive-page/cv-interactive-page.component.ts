@@ -88,11 +88,6 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
     this.scrollToSection(sectionId);
   }
 
-  onContactClick(event: Event): void {
-    event.preventDefault();
-    this.scrollToSection('contact');
-  }
-
   async onDownloadCv(event: Event): Promise<void> {
     event.preventDefault();
 
