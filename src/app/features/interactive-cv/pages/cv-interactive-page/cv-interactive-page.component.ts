@@ -14,10 +14,15 @@ import {
 import { CV_DATA } from '../../../../data/cv.data';
 import { CvProfile } from '../../../../models/cv.model';
 import { CvHeroComponent } from '../../components/cv-hero/cv-hero.component';
-import { TopbarNavItem } from '../../components/cv-topbar/cv-topbar.component';
 import { InteractiveExperienceListComponent } from '../../components/experience-list/experience-list.component';
 import { SkillGroup, SkillsFilterComponent } from '../../components/skills-filter/skills-filter.component';
 import { SectionCardComponent } from '../../components/shared/section-card/section-card.component';
+
+interface TopbarNavItem {
+  id: string;
+  label: string;
+  optionalOnMobile?: boolean;
+}
 
 @Component({
   selector: 'app-cv-interactive-page',
