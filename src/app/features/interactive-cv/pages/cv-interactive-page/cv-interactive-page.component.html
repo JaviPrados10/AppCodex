@@ -9,7 +9,7 @@
   <div class="topbar-shell" [class.is-compact]="isStickyCompact()">
     <header class="premium-topbar" aria-label="Navegación principal del CV">
       <div class="topbar-main-row">
-        <nav class="floating-nav" aria-label="Navegación por secciones">
+        <nav class="floating-nav desktop-nav" aria-label="Navegación por secciones">
           <a
             *ngFor="let item of navItems"
             [attr.href]="'#' + item.id"
@@ -23,7 +23,37 @@
         <div class="topbar-cta" aria-label="Acciones rápidas">
           <button class="primary-btn" type="button" (click)="onDownloadCv($event)">Descargar CV</button>
         </div>
+
+        <button
+          class="mobile-menu-toggle"
+          type="button"
+          [attr.aria-expanded]="isMobileMenuOpen()"
+          aria-controls="mobile-topbar-nav"
+          [attr.aria-label]="isMobileMenuOpen() ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
+          (click)="toggleMobileMenu()"
+        >
+          <span class="menu-icon-line"></span>
+          <span class="menu-icon-line"></span>
+          <span class="menu-icon-line"></span>
+        </button>
       </div>
+
+      <nav
+        id="mobile-topbar-nav"
+        class="floating-nav mobile-nav-panel"
+        [class.is-open]="isMobileMenuOpen()"
+        [attr.aria-hidden]="!isMobileMenuOpen()"
+        aria-label="Navegación móvil por secciones"
+      >
+        <a
+          *ngFor="let item of navItems"
+          [attr.href]="'#' + item.id"
+          [class.active]="activeSection() === item.id"
+          (click)="onMobileNavClick($event, item.id)"
+        >
+          {{ item.label }}
+        </a>
+      </nav>
     </header>
   </div>
   <section id="hero" class="hero-stage">
