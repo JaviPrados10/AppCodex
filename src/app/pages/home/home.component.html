@@ -81,7 +81,10 @@
     aria-label="Volver al inicio"
     (click)="scrollToTop()"
   >
-    <span aria-hidden="true">↑</span>
+    <span class="scroll-top-icon" aria-hidden="true">
+      <span class="chevron-left"></span>
+      <span class="chevron-right"></span>
+    </span>
   </button>
 
   <header class="hero" id="inicio" data-reveal>
