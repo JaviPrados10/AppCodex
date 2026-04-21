@@ -248,33 +248,28 @@
 }
 
 .scroll-top-icon {
-  position: relative;
-  width: 14px;
+  width: 16px;
   height: 10px;
-  display: block;
-  transform: translateY(-1px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: none;
 }
 
 .scroll-top-icon .chevron-left,
 .scroll-top-icon .chevron-right {
-  position: absolute;
-  top: 0;
-  width: 9px;
+  width: 10px;
   height: 3px;
   border-radius: 999px;
   background: currentColor;
 }
 
 .scroll-top-icon .chevron-left {
-  left: 0;
-  transform: rotate(-42deg);
-  transform-origin: left center;
+  transform: rotate(-42deg) translateX(1px);
 }
 
 .scroll-top-icon .chevron-right {
-  right: 0;
-  transform: rotate(42deg);
-  transform-origin: right center;
+  transform: rotate(42deg) translateX(-1px);
 }
 
 .scroll-top-fab.is-visible {
