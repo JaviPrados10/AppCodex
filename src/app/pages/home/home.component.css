@@ -180,6 +180,18 @@
   justify-content: center;
 }
 
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-nav-fab {
+  display: none;
+}
+
+.mobile-nav-panel {
+  display: none;
+}
+
 @media (min-width: 1081px) {
   .floating-navbar {
     display: block;
@@ -1017,5 +1029,93 @@ button:focus-visible {
     margin-left: 0;
     justify-self: auto;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cv-shell {
+    padding-top: 5rem;
+  }
+
+  .floating-navbar {
+    display: none;
+  }
+
+  .mobile-nav-fab {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 1300;
+    display: block;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(141, 160, 214, 0.42);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 10px 24px rgba(20, 29, 61, 0.18);
+    cursor: pointer;
+  }
+
+  .mobile-menu-toggle span {
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: #2a3555;
+  }
+
+  .mobile-nav-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(240px, calc(100vw - 24px));
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    border-radius: 14px;
+    border: 1px solid rgba(151, 175, 238, 0.42);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 14px 30px rgba(20, 29, 61, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
+    visibility: hidden;
+  }
+
+  .mobile-nav-fab.open .mobile-nav-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .mobile-nav-panel a,
+  .mobile-download-action {
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.62rem 0.78rem;
+    font: inherit;
+    font-size: 0.94rem;
+    color: #243756;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .mobile-nav-panel a:hover,
+  .mobile-download-action:hover {
+    background: rgba(29, 78, 216, 0.09);
+    color: #1d4ed8;
   }
 }
