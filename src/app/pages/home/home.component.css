@@ -104,13 +104,13 @@
 .floating-navbar {
   position: fixed;
   top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(92%, 1080px);
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) auto minmax(240px, 1fr);
-  align-items: center;
-  gap: 1rem;
+  left: 0;
+  right: 0;
+  transform: none;
+  width: fit-content;
+  max-width: calc(100vw - 20px);
+  margin: 0 auto;
+  display: block;
   padding: 0.68rem 1.12rem;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.8);
@@ -121,6 +121,13 @@
   z-index: 1000;
   margin-bottom: 0.8rem;
   transition: top 220ms ease, padding 220ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.topbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.72rem;
 }
 
 .floating-navbar.scrolled {
@@ -146,8 +153,8 @@
 .nav-center {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.42rem;
-  justify-self: center;
 }
 
 .nav-center a {
@@ -170,7 +177,31 @@
   display: flex;
   align-items: center;
   gap: 0.56rem;
-  justify-self: end;
+  justify-content: center;
+}
+
+@media (min-width: 1081px) {
+  .floating-navbar {
+    display: block;
+    width: fit-content;
+    max-width: calc(100vw - 20px);
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+
+  .nav-center {
+    position: static;
+    left: auto;
+    transform: none;
+    justify-content: center;
+  }
+
+  .nav-right {
+    margin-left: 0;
+    justify-self: auto;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 1081px) {
@@ -932,5 +963,59 @@ button:focus-visible {
   .card:hover,
   .timeline-item:hover {
     transform: none;
+  }
+}
+
+/* Final topbar layout overrides */
+.floating-navbar {
+  left: 0;
+  right: 0;
+  transform: none;
+  width: fit-content;
+  max-width: calc(100vw - 20px);
+  margin: 0 auto;
+  display: block;
+}
+
+.topbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.72rem;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1081px) {
+  .floating-navbar {
+    left: 0;
+    right: 0;
+    transform: none;
+    width: fit-content;
+    max-width: calc(100vw - 20px);
+    display: block;
+  }
+
+  .nav-center {
+    position: static;
+    left: auto;
+    transform: none;
+    justify-content: center;
+  }
+
+  .nav-right {
+    margin-left: 0;
+    justify-self: auto;
+    justify-content: center;
   }
 }
