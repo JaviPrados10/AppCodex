@@ -140,6 +140,7 @@
 }
 
 .floating-nav {
+  grid-column: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,6 +169,7 @@
 }
 
 .topbar-cta {
+  grid-column: 3;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -399,6 +401,7 @@ strong {
   }
 
   .floating-nav {
+    grid-column: 1;
     width: 100%;
     overflow-x: auto;
     margin-top: 0;
@@ -409,6 +412,7 @@ strong {
   }
 
   .topbar-cta {
+    grid-column: 1;
     width: 100%;
     justify-content: center;
     gap: 0;
