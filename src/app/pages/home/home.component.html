@@ -5,9 +5,37 @@
     <span class="shape shape-three"></span>
   </div>
 
+  <div class="mobile-nav-fab" [class.open]="isMobileMenuOpen">
+    <button
+      type="button"
+      class="mobile-menu-toggle floating-control"
+      [attr.aria-expanded]="isMobileMenuOpen"
+      aria-controls="mobile-nav-panel"
+      [attr.aria-label]="isMobileMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
+      (click)="toggleMobileMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      id="mobile-nav-panel"
+      class="mobile-nav-panel"
+      [attr.aria-hidden]="!isMobileMenuOpen"
+      aria-label="Navegación móvil"
+    >
+      <a href="#experiencia" (click)="onMobileNavLinkClick($event, 'experiencia')">Experiencia</a>
+      <a href="#skills" (click)="onMobileNavLinkClick($event, 'skills')">Skills</a>
+      <a href="#formacion" (click)="onMobileNavLinkClick($event, 'formacion')">Formación</a>
+      <a href="#contacto" (click)="onMobileNavLinkClick($event, 'contacto')">Contacto</a>
+      <button type="button" class="mobile-download-action" (click)="onMobileDownloadClick()">Descargar CV</button>
+    </nav>
+  </div>
+
   <div class="floating-navbar" [class.scrolled]="isNavbarScrolled">
     <div class="topbar-content">
-      <nav class="nav-center" aria-label="Navegación principal">
+      <nav id="mobile-nav-links" class="nav-center" aria-label="Navegación principal">
         <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
         <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
         <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
@@ -19,6 +47,16 @@
       </div>
     </div>
   </div>
+
+  <button
+    type="button"
+    class="scroll-top-fab floating-control floating-control-secondary"
+    [class.is-visible]="isScrollTopVisible"
+    aria-label="Volver al inicio"
+    (click)="scrollToTop()"
+  >
+    <span aria-hidden="true">↑</span>
+  </button>
 
   <header class="hero" id="inicio" data-reveal>
     <div class="hero-grid">

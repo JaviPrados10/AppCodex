@@ -38,6 +38,7 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
   readonly isStickyCompact = signal(false);
   readonly activeSection = signal('hero');
   readonly isPrintMode = signal(false);
+  readonly isMobileMenuOpen = signal(false);
   intersectionObserver: IntersectionObserver | null = null;
   private isPrinting = false;
 
@@ -87,6 +88,15 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
     this.scrollToSection(sectionId);
   }
 
+  onMobileNavClick(event: Event, sectionId: string): void {
+    this.onNavClick(event, sectionId);
+    this.isMobileMenuOpen.set(false);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update((isOpen) => !isOpen);
+  }
+
   async onDownloadCv(event: Event): Promise<void> {
     event.preventDefault();
 
@@ -128,6 +138,11 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
     this.changeDetectorRef.detectChanges();
   }
 
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    this.updateStickyState();
+  }
+
   private scrollToSection(sectionId: string): void {
     const targetSection = document.getElementById(sectionId);
 
@@ -149,6 +164,9 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
 
   private readonly updateStickyState = (): void => {
     this.isStickyCompact.set(window.scrollY > 32);
+    if (window.innerWidth > 768 && this.isMobileMenuOpen()) {
+      this.isMobileMenuOpen.set(false);
+    }
   };
 
   private observeSections(): void {

@@ -13,6 +13,13 @@
   --shadow-card: 0 14px 28px rgba(35, 54, 115, 0.1);
   --shadow-hover: 0 20px 34px rgba(35, 54, 115, 0.16);
   --focus-ring: 0 0 0 3px rgba(99, 154, 255, 0.35);
+  --floating-edge: clamp(0.9rem, 3vw, 2.5rem);
+  --floating-control-bg: rgba(255, 255, 255, 0.74);
+  --floating-control-border: rgba(225, 232, 245, 0.78);
+  --floating-control-shadow: 0 8px 18px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  --floating-control-shadow-hover: 0 10px 22px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  --floating-control-radius: 12px;
+  --floating-control-transition: 240ms cubic-bezier(0.2, 0.72, 0.2, 1);
 }
 
 :host-context(body.dark-mode) {
@@ -178,6 +185,79 @@
   align-items: center;
   gap: 0.56rem;
   justify-content: center;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-nav-fab {
+  display: none;
+}
+
+.mobile-nav-panel {
+  display: none;
+}
+
+.floating-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 34px;
+  border: 1px solid var(--floating-control-border);
+  border-radius: var(--floating-control-radius);
+  background: var(--floating-control-bg);
+  backdrop-filter: blur(13px) saturate(1.08);
+  -webkit-backdrop-filter: blur(13px) saturate(1.08);
+  box-shadow: var(--floating-control-shadow);
+  color: #3d475b;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.floating-control:hover {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(214, 224, 241, 0.9);
+  box-shadow: var(--floating-control-shadow-hover);
+}
+
+.floating-control-secondary {
+  background: rgba(255, 255, 255, 0.68);
+  border-color: rgba(225, 232, 245, 0.7);
+}
+
+.scroll-top-fab {
+  position: fixed;
+  right: var(--floating-edge);
+  bottom: 22px;
+  z-index: 1240;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity var(--floating-control-transition),
+    transform var(--floating-control-transition),
+    box-shadow 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.scroll-top-fab span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.scroll-top-fab.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 @media (min-width: 1081px) {
@@ -1017,5 +1097,94 @@ button:focus-visible {
     margin-left: 0;
     justify-self: auto;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cv-shell {
+    --floating-edge: clamp(0.72rem, 2.8vw, 0.96rem);
+    padding-top: 4rem;
+  }
+
+  .floating-navbar {
+    display: none;
+  }
+
+  .mobile-nav-fab {
+    position: fixed;
+    top: 11px;
+    right: var(--floating-edge);
+    z-index: 1300;
+    display: block;
+  }
+
+  .scroll-top-fab {
+    right: var(--floating-edge);
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    gap: 3px;
+  }
+
+  .mobile-menu-toggle span {
+    width: 16px;
+    height: 2px;
+    border-radius: 999px;
+    background: #3d475b;
+  }
+
+  .mobile-nav-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: min(246px, calc(100vw - 1.44rem));
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid rgba(227, 234, 247, 0.78);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px) saturate(1.08);
+    -webkit-backdrop-filter: blur(16px) saturate(1.08);
+    box-shadow:
+      0 14px 30px rgba(15, 23, 42, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.68);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-5px) scale(0.988);
+    transform-origin: top right;
+    transition: opacity var(--floating-control-transition), transform 280ms cubic-bezier(0.2, 0.72, 0.2, 1), visibility var(--floating-control-transition);
+    visibility: hidden;
+  }
+
+  .mobile-nav-fab.open .mobile-nav-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+  }
+
+  .mobile-nav-panel a,
+  .mobile-download-action {
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.68rem 0.82rem;
+    font: inherit;
+    font-size: 0.94rem;
+    color: #2f3b52;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 170ms ease, color 170ms ease;
+  }
+
+  .mobile-nav-panel a:hover,
+  .mobile-download-action:hover {
+    background: rgba(15, 23, 42, 0.06);
+    color: #1f2937;
   }
 }

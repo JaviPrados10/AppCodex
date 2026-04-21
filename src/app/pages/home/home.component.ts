@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isDarkMode = false;
   isNavbarScrolled = false;
   isPrintMode = false;
+  isMobileMenuOpen = false;
+  isScrollTopVisible = false;
 
   private sectionObserver?: IntersectionObserver;
   private revealObserver?: IntersectionObserver;
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.initSectionObserver();
     this.initRevealObserver();
+    this.onWindowScroll();
   }
 
   ngOnDestroy(): void {
@@ -105,9 +108,31 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  onMobileNavLinkClick(event: Event, sectionId: string): void {
+    this.onNavLinkClick(event, sectionId);
+    this.isMobileMenuOpen = false;
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  onMobileDownloadClick(): void {
+    this.isMobileMenuOpen = false;
+    void this.downloadCv();
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isNavbarScrolled = window.scrollY > 18;
+    this.isScrollTopVisible = window.scrollY > 200;
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    if (window.innerWidth > 768 && this.isMobileMenuOpen) {
+      this.isMobileMenuOpen = false;
+    }
   }
 
   @HostListener('window:afterprint')
@@ -115,6 +140,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isPrintMode = false;
     this.isPrinting = false;
     this.changeDetectorRef.detectChanges();
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   private applyTheme(): void {
