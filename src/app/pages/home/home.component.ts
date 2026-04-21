@@ -115,6 +115,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
+  onMobileDownloadClick(): void {
+    this.isMobileMenuOpen = false;
+    void this.downloadCv();
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isNavbarScrolled = window.scrollY > 18;

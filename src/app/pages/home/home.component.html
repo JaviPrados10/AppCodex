@@ -8,10 +8,10 @@
   <div class="floating-navbar" [class.scrolled]="isNavbarScrolled">
     <div class="topbar-content" [class.mobile-open]="isMobileMenuOpen">
       <nav id="mobile-nav-links" class="nav-center" aria-label="Navegación principal">
-        <a href="#experiencia" (click)="onMobileNavLinkClick($event, 'experiencia')">Experiencia</a>
-        <a href="#skills" (click)="onMobileNavLinkClick($event, 'skills')">Skills</a>
-        <a href="#formacion" (click)="onMobileNavLinkClick($event, 'formacion')">Formación</a>
-        <a href="#contacto" (click)="onMobileNavLinkClick($event, 'contacto')">Contacto</a>
+        <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
+        <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
+        <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
+        <a href="#contacto" (click)="onNavLinkClick($event, 'contacto')">Contacto</a>
       </nav>
 
       <div class="nav-right">
@@ -22,7 +22,7 @@
         type="button"
         class="mobile-menu-toggle"
         [attr.aria-expanded]="isMobileMenuOpen"
-        aria-controls="mobile-nav-links"
+        aria-controls="mobile-nav-panel"
         [attr.aria-label]="isMobileMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
         (click)="toggleMobileMenu()"
       >
@@ -30,6 +30,19 @@
         <span></span>
         <span></span>
       </button>
+
+      <nav
+        id="mobile-nav-panel"
+        class="mobile-nav-panel"
+        [attr.aria-hidden]="!isMobileMenuOpen"
+        aria-label="Navegación móvil"
+      >
+        <a href="#experiencia" (click)="onMobileNavLinkClick($event, 'experiencia')">Experiencia</a>
+        <a href="#skills" (click)="onMobileNavLinkClick($event, 'skills')">Skills</a>
+        <a href="#formacion" (click)="onMobileNavLinkClick($event, 'formacion')">Formación</a>
+        <a href="#contacto" (click)="onMobileNavLinkClick($event, 'contacto')">Contacto</a>
+        <button type="button" class="mobile-download-action" (click)="onMobileDownloadClick()">Descargar CV</button>
+      </nav>
     </div>
   </div>
 
