@@ -6,15 +6,17 @@
   </div>
 
   <div class="floating-navbar" [class.scrolled]="isNavbarScrolled">
-    <nav class="nav-center" aria-label="Navegación principal">
-      <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
-      <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
-      <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
-      <a href="#contacto" (click)="onNavLinkClick($event, 'contacto')">Contacto</a>
-    </nav>
+    <div class="topbar-content">
+      <nav class="nav-center" aria-label="Navegación principal">
+        <a href="#experiencia" (click)="onNavLinkClick($event, 'experiencia')">Experiencia</a>
+        <a href="#skills" (click)="onNavLinkClick($event, 'skills')">Skills</a>
+        <a href="#formacion" (click)="onNavLinkClick($event, 'formacion')">Formación</a>
+        <a href="#contacto" (click)="onNavLinkClick($event, 'contacto')">Contacto</a>
+      </nav>
 
-    <div class="nav-right">
-      <button type="button" class="btn primary" (click)="downloadCv()">Descargar CV</button>
+      <div class="nav-right">
+        <button type="button" class="btn primary" (click)="downloadCv()">Descargar CV</button>
+      </div>
     </div>
   </div>
 
