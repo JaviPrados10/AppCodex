@@ -21,7 +21,6 @@ import { SectionCardComponent } from '../../components/shared/section-card/secti
 interface TopbarNavItem {
   id: string;
   label: string;
-  optionalOnMobile?: boolean;
 }
 
 @Component({
@@ -45,7 +44,7 @@ export class CvInteractivePageComponent implements AfterViewInit, OnDestroy {
   readonly navItems: TopbarNavItem[] = [
     { id: 'experience', label: 'Experiencia' },
     { id: 'toolkit', label: 'Skills' },
-    { id: 'learning', label: 'Formación', optionalOnMobile: true },
+    { id: 'learning', label: 'Formación' },
     { id: 'contact', label: 'Contacto' }
   ];
 
