@@ -1114,6 +1114,7 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .cv-shell {
+    --mobile-content-edge: clamp(0.72rem, 2.8vw, 0.96rem);
     padding-top: 4rem;
   }
 
@@ -1123,8 +1124,8 @@ button:focus-visible {
 
   .mobile-nav-fab {
     position: fixed;
-    top: 12px;
-    right: 14px;
+    top: 11px;
+    right: var(--mobile-content-edge);
     z-index: 1300;
     display: block;
   }
@@ -1135,16 +1136,16 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
     gap: 3px;
-    width: 44px;
-    height: 36px;
-    border: 1px solid rgba(218, 226, 242, 0.9);
-    border-radius: 13px;
-    background: rgba(255, 255, 255, 0.76);
-    backdrop-filter: blur(14px) saturate(1.1);
-    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    width: 42px;
+    height: 34px;
+    border: 1px solid rgba(225, 232, 245, 0.78);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.74);
+    backdrop-filter: blur(13px) saturate(1.08);
+    -webkit-backdrop-filter: blur(13px) saturate(1.08);
     box-shadow:
-      0 8px 20px rgba(15, 23, 42, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      0 8px 18px rgba(15, 23, 42, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
     cursor: pointer;
     transition: transform 180ms ease, box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease;
   }
@@ -1158,35 +1159,35 @@ button:focus-visible {
 
   .mobile-menu-toggle:hover {
     transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.84);
-    border-color: rgba(209, 218, 237, 0.95);
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(214, 224, 241, 0.9);
     box-shadow:
-      0 10px 24px rgba(15, 23, 42, 0.14),
+      0 10px 22px rgba(15, 23, 42, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
 
   .mobile-nav-panel {
     position: absolute;
-    top: calc(100% + 9px);
+    top: calc(100% + 8px);
     right: 0;
-    width: min(250px, calc(100vw - 28px));
+    width: min(246px, calc(100vw - 1.44rem));
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
     padding: 8px;
-    border-radius: 16px;
-    border: 1px solid rgba(220, 228, 244, 0.88);
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(18px) saturate(1.12);
-    -webkit-backdrop-filter: blur(18px) saturate(1.12);
+    border-radius: 15px;
+    border: 1px solid rgba(227, 234, 247, 0.78);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px) saturate(1.08);
+    -webkit-backdrop-filter: blur(16px) saturate(1.08);
     box-shadow:
-      0 16px 36px rgba(15, 23, 42, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      0 14px 30px rgba(15, 23, 42, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.68);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-6px) scale(0.985);
+    transform: translateY(-5px) scale(0.988);
     transform-origin: top right;
-    transition: opacity 220ms ease, transform 260ms cubic-bezier(0.22, 0.7, 0.22, 1), visibility 220ms ease;
+    transition: opacity 240ms ease, transform 280ms cubic-bezier(0.2, 0.72, 0.2, 1), visibility 240ms ease;
     visibility: hidden;
   }
 
@@ -1202,8 +1203,8 @@ button:focus-visible {
     width: 100%;
     text-align: left;
     border: 0;
-    border-radius: 11px;
-    padding: 0.66rem 0.8rem;
+    border-radius: 10px;
+    padding: 0.68rem 0.82rem;
     font: inherit;
     font-size: 0.94rem;
     color: #2f3b52;
