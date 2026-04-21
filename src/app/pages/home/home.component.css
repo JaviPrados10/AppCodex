@@ -1114,7 +1114,7 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .cv-shell {
-    padding-top: 5.2rem;
+    padding-top: 4rem;
   }
 
   .floating-navbar {
@@ -1123,7 +1123,7 @@ button:focus-visible {
 
   .mobile-nav-fab {
     position: fixed;
-    top: 14px;
+    top: 12px;
     right: 14px;
     z-index: 1300;
     display: block;
