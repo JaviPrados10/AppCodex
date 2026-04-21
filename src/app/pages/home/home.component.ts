@@ -135,13 +135,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  @HostListener('window:resize')
-  onWindowResize(): void {
-    if (window.innerWidth > 768 && this.isMobileMenuOpen) {
-      this.isMobileMenuOpen = false;
-    }
-  }
-
   @HostListener('window:afterprint')
   onAfterPrint(): void {
     this.isPrintMode = false;
