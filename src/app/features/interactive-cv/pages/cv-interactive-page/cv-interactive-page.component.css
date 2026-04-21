@@ -98,17 +98,19 @@
 .topbar-shell {
   position: fixed;
   top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   z-index: 1000;
-  width: min(98%, 1320px);
+  width: fit-content;
+  margin: 0 auto;
   margin-top: 0;
 }
 
 .premium-topbar {
   min-height: 0;
-  width: 100%;
-  padding: 0.68rem 1.12rem;
+  width: fit-content;
+  max-width: calc(100vw - 20px);
+  padding: 0.56rem 0.72rem;
   border-radius: 18px;
   border: 1px solid rgb(255 255 255 / 55%);
   background: rgb(255 255 255 / 80%);
@@ -126,15 +128,15 @@
 }
 
 .topbar-shell.is-compact .premium-topbar {
-  padding: 0.58rem 0.9rem;
+  padding: 0.48rem 0.64rem;
   background: rgb(255 255 255 / 86%);
 }
 
 .topbar-main-row {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) auto minmax(240px, 1fr);
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.72rem;
 }
 
 .floating-nav {
@@ -142,8 +144,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 0.34rem 0.74rem;
+  gap: 4px;
+  padding: 0.24rem 0.45rem;
   border-radius: var(--surface-radius-pill);
   border: 2px solid #cfd9f2;
   background: rgb(255 255 255 / 88%);
@@ -170,14 +172,14 @@
   grid-column: 3;
   display: flex;
   align-items: center;
-  justify-self: end;
+  justify-content: flex-end;
 }
 
 .primary-btn {
   cursor: pointer;
   border-radius: 18px;
   border: 0;
-  padding: 0.74rem 2rem;
+  padding: 0.66rem 1.45rem;
   font: inherit;
   font-size: clamp(1rem, 1.26vw, 1.08rem);
   font-weight: 700;
@@ -333,25 +335,9 @@ strong {
     padding-top: 136px;
   }
 
-  .topbar-shell {
-    width: min(97%, 960px);
-  }
-
   .topbar-main-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .topbar-cta {
-    grid-column: 1;
-    width: 100%;
-    justify-content: center;
-    justify-self: center;
-  }
-
-  .floating-nav {
-    grid-column: 1;
+    display: inline-flex;
+    gap: 0.62rem;
   }
 }
 
@@ -391,7 +377,7 @@ strong {
 
   .topbar-shell {
     top: var(--topbar-offset);
-    width: min(98%, 760px);
+    width: calc(100% - 12px);
   }
 
   .premium-topbar {
@@ -403,11 +389,9 @@ strong {
   }
 
   .topbar-main-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: stretch;
+    display: flex;
     flex-direction: column;
-    justify-items: stretch;
+    align-items: stretch;
     gap: 8px;
   }
 
