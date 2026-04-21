@@ -8,7 +8,7 @@
   <div class="mobile-nav-fab" [class.open]="isMobileMenuOpen">
     <button
       type="button"
-      class="mobile-menu-toggle"
+      class="mobile-menu-toggle floating-control"
       [attr.aria-expanded]="isMobileMenuOpen"
       aria-controls="mobile-nav-panel"
       [attr.aria-label]="isMobileMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
@@ -73,6 +73,16 @@
       </nav>
     </div>
   </div>
+
+  <button
+    type="button"
+    class="scroll-top-fab floating-control floating-control-secondary"
+    [class.is-visible]="isScrollTopVisible"
+    aria-label="Volver al inicio"
+    (click)="scrollToTop()"
+  >
+    <span aria-hidden="true">↑</span>
+  </button>
 
   <header class="hero" id="inicio" data-reveal>
     <div class="hero-grid">
